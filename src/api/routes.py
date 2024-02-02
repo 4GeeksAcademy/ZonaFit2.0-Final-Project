@@ -11,7 +11,6 @@ api = Blueprint('api', __name__)
 # Allow CORS requests to this API
 CORS(api)
 
-
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
@@ -20,3 +19,7 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+# aca las rutinas debo definirlas base al front metodos gets para las bases
+
+
