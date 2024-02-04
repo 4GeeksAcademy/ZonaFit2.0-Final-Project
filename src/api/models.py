@@ -7,9 +7,11 @@ db = SQLAlchemy()
 class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    user_name = db.Column(db.String(120), unique=True, nullable=False)
+    first_name = db.Column(db.String(120), unique=True, nullable=False)
+    last_name = db.Column(db.String(120), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
+    profile_picture = db.Column(db.String(200), unique=False)
     is_new = db.Column(db.Boolean(), unique=False)
     is_admin = db.Column(db.Boolean(), unique=False)
     completed_routines = db.Column(db.Integer, unique=False)
@@ -30,7 +32,8 @@ class User(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "user_name": self.user_name,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
             "email": self.email,
             "is_new": self.is_new,
             "is_admin": self.is_admin,
@@ -122,8 +125,12 @@ class Routines(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     routine_name = db.Column(db.String(40), unique=True)
+    premium = db.Column(db.Boolean(),unique=False)
     start_date = db.Column(db.Date(), unique=False)
     final_date = db.Column(db.Date(), unique=False)
+    picture = db.Column(db.String(200), unique=False)
+    difficulty_level = db.Column(db.String(40), unique=False)
+    type_of_routine = db.Column(db.String(40), unique= False)
     #foreign key
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     # relacional
@@ -138,8 +145,12 @@ class Routines(db.Model):
         return{
             "id": self.id,
             "routine_name": self.routine_name,
+            "premium": self.premium,
             "start_date": self.start_date,
             "final_date": self.final_date,
+            "picture": self.picture,
+            "difficulty_level": self.difficulty_level,
+            "type_of_routine": self.type_of_routine,
             "user_id": self.user_id,
         }
 
