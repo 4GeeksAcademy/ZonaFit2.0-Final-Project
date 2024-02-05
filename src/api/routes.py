@@ -1,6 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+import json
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Routines, Equipment, Exercises, Meals, Muscles, RoutinesAux
 from api.utils import generate_sitemap, APIException
@@ -144,6 +145,42 @@ def get_meal(meal_id):
 
     return jsonify(result), 200
 
+# Ruta para actualizar datos de la cuenta (limitada a ciertos campos tambien puede que sea necesaria para actualizar a premium)
+
+@api.route('/user/<int:user_id>', methods=['GET', 'PUT'])
+def update_user(user_id):
+    user = User.query.filter_by(id = user_id).first()              # se busca en la base de datos el diccionario con el user requerido por el id que le pasamos de la ruta
+    
+    if user is None:                                               # condicional si no existe el planeta por el id introducido se da el mensaje y codigo de error
+        return jsonify({'message': 'the user doesnt exist'}), 404
+
+    if request.method == 'PUT':
+        body = json.loads(request.data)                              # se recupera la data de la solicitud (que esta en json) y se pasa a un diccionario en python para poder trabajar con la funcion .loads de la biblioteca json por eso json.loads
+
+        if 'first_name' in body:                                     # serie de condicionales para actualizar los campos del diccionario 'user' seleccionado se va a
+            user.first_name = body['first_name']                     # preguntar a cada uno de los campos introducidos en el modelo de datos de tabla recreados en models.py para verificarlos 1 a 1
+
+        if 'last_name' in body:
+            user.last_name = body['last_name']
+        
+        if 'email' in body:
+            user.email = body['email']
+        
+        if 'password' in body:
+            user.password = body['password']
+
+        if 'user_type' in body:
+            user.user_type = body['user_type']
+
+        db.session.commit()
+        
+        return jsonify({"msg": "The user was succesfully updated" }) , 200
+    
+    if request.method == 'GET':
+        result = user.serialize()
+
+        return jsonify(result), 200
+        
 ### rutas de aca para abajo son experimentales probablmente se eliminen en un futuro
 
 @api.route('/user', methods=['GET'])  # por probar le puse esta ruta 
