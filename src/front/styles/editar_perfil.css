@@ -2,8 +2,10 @@ body {
     background-color: #101312;
 }
 
-.my-5 {
-    margin-top: 6rem !important;
+.logo-container {
+    width: 200px;
+    /* Ajusta el ancho a tu logo */
+    margin: 20px auto -60px;
 }
 
 .card {
@@ -12,12 +14,9 @@ body {
     padding: 20px;
     max-width: 400px;
     margin: 0 auto;
-    margin-top: 100px;
 }
 
-.card-body {
-    gap: 288px;
-}
+
 
 .form-control {
     border-radius: 24px;
@@ -32,15 +31,6 @@ body {
     border: 2px solid #181818;
 }
 
-.btn-ghost {
-    background-color: transparent;
-    color: #181818;
-    border: 2px solid #181818;
-    padding: 12px 16px;
-    border-radius: 24px;
-}
-
-.btn-ghost:hover,
 .btn-primary:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
@@ -70,25 +60,17 @@ body {
     font-size: 12px;
 }
 
-.text-muted a {
-    text-decoration: none;
-    color: #101312;
-}
-
-.text-muted:hover a {
-    color: #F26B21;
-}
-
-.form-label {
+h2 {
     color: #181818;
-    font-size: 14px;
-    transition: all 0.2s ease;
+    font-size: 18px;
+    margin-bottom: 15px;
 }
 
-.form-floating {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    margin-bottom: 23px;
-    text-align: left;
+.form-group {
+    margin-bottom: 37px;
+}
+
+
+.btn-primary {
+    width: 100%;
 }

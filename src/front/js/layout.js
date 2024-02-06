@@ -14,6 +14,8 @@ import { Registro } from "./pages/registro";
 import { Login } from "./pages/login";
 import { Recordar } from "./pages/recordar";
 import { Perfil } from "./pages/perfil";
+import { Editar_perfil } from "./pages/editar_perfil";
+
 
 //create your first component
 const Layout = () => {
@@ -37,6 +39,7 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Recordar />} path="/recordar" />
                         <Route element={<Perfil />} path="/perfil" />
+                        <Route element={<Editar_perfil />} path="/editar_perfil" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>
