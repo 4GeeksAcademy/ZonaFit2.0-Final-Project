@@ -5,7 +5,7 @@ body {
 .logo-container {
     width: 200px;
     /* Asigna el ancho deseado */
-    margin: 20px auto -60px
+   /* margin: 20px auto -60px*/
 }
 
 .card {
