@@ -29,13 +29,13 @@ export const Login = () => {
                                 <input type="email" className="form-control" id="email" placeholder="name@example.com" />
 
                             </div>
-                            <div className="form-floating form-label input-group mb-4">
+
+                            <div className="form-floating form-label mb-5">
                                 <label for="password">Contraseña</label>
-                                <input type="password" className="form-control" id="password" placeholder="*****" />
-
-
+                                <input type="password" className="form-control" id="password" placeholder="*******" />
 
                             </div>
+
 
                             <div className="d-flex justify-content-between align-items-center gap-3" >
 

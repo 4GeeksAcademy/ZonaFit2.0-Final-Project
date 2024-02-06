@@ -22,7 +22,7 @@ export const Recordar = () => {
                                     <input type="email" className="form-control" id="email" placeholder="name@example.com" />
                                 </div>
 
-                                <a href="/login.html" className="btn btn-ghost">Volver a Inicio de sesión</a>
+                                <a href="/login.html" className="btn btn-ghost mb-4">Volver a Inicio de sesión</a>
 
                                 <button type="submit" className="btn btn-primary">Recordar contraseña</button>
                             </form>
