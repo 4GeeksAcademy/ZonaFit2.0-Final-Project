@@ -29,19 +29,6 @@ def handle_hello():
 
 # aca las rutinas debo definirlas base al front metodos gets para las bases
 
-#resultado = db.session.query(Routines, User).filter_by(user_id = id).join(User).all()
-
-# results = list (map( lambda routine: {
-# "idRutina" : routine[0].id,
-# "name:" routine[0].routine_name,
-# "idUsuer": routine[1].id,
-# "user_name": routine[1].user_name
-# }, resultado))
-
-# return jsonify(results), 200
-
-# resultado = db.session.query(Routines, User).filter_by(user_id = id).join(User, Routines.id_user == User.id).all()
-
 # Ruta log in user con el token de autenticacion metodo probado con postman
 
 @api.route("/login", methods=["POST"]) # en postman url = http://wikeddirectionurlapp.githubetc + /api/token, no token solo
