@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/recordar.css";
 import logo from "../../img/logo.png"
+import { Link } from "react-router-dom";
 
 
 export const Recordar = () => {
@@ -18,12 +19,13 @@ export const Recordar = () => {
 
                             <form method="POST" action="/api/recuperar-contrasena">
                                 <div className="form-floating mb-4">
-                                    <label for="email">Correo electrónico</label>
+                                    <label htmlFor="email">Correo electrónico</label>
                                     <input type="email" className="form-control" id="email" placeholder="name@example.com" />
                                 </div>
 
-                                <a href="/login.html" className="btn btn-ghost mb-4">Volver a Inicio de sesión</a>
+                                {/* <a href="/login.html" className="btn btn-ghost mb-4">Volver a Inicio de sesión</a> */}
 
+                                <Link to={"/login"} className="btn btn-ghost mb-4">Volver a Inicio de sesión</Link>
                                 <button type="submit" className="btn btn-primary">Recordar contraseña</button>
                             </form>
                         </div>

@@ -1,14 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/login.css";
 import logo from "../../img/logo.png"
+import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 
 export const Login = () => {
     const { store, actions } = useContext(Context);
+    const navigate = useNavigate()
 
+    const [mail, setMail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const login = async (e) => {
+        e.preventDefault()
+        if (mail != "" & password != "") {
+            let resp = await actions.login(mail, password)
+            if (resp) {
+                navigate("/perfil")
+            }
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Faltan completar datos",
+
+            });
+        }
+    }
     return (
-        <div className="container">
+        <div className="container d-flex justify-content-center">
 
             <div className="row">
                 <div className="col">
@@ -23,28 +45,31 @@ export const Login = () => {
                 <div className="card my-5">
                     <div className="card-body">
 
-                        <form method="POST" action="/login">
+                        <form >
                             <div className="form-floating form-label mb-5">
-                                <label for="email">Email</label>
-                                <input type="email" className="form-control" id="email" placeholder="name@example.com" />
+                                <label htmlFor="email">Email</label>
+                                <input type="email" value={mail} onChange={(e) => setMail(e.target.value)} className="form-control" id="email" placeholder="name@example.com" />
 
                             </div>
 
                             <div className="form-floating form-label mb-5">
-                                <label for="password">Contraseña</label>
-                                <input type="password" className="form-control" id="password" placeholder="*******" />
+                                <label htmlFor="password">Contraseña</label>
+                                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" id="password" placeholder="*******" />
 
                             </div>
 
 
                             <div className="d-flex justify-content-between align-items-center gap-3" >
+                                <Link to={"/registro"} className="btn btn-ghost">Crear cuenta</Link>
 
-                                <a href="/register.html" className="btn btn-ghost">Crear cuenta</a>
-                                <button type="submit" className="btn btn-primary">Iniciar sesión</button>
+                                <button onClick={(e) => login(e)} type="submit" className="btn btn-primary">Iniciar sesión</button>
                             </div>
                         </form>
 
-                        <p className="text-muted"><a href="/remember.html">¿Olvidaste tu contraseña?</a></p>
+                        <p className="text-muted">
+                            <Link to={"/recordar"}>¿Olvidaste tu contraseña?</Link>
+
+                        </p>
 
                     </div>
                 </div>
