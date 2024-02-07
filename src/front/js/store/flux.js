@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			token: "",
+			currentUser: "",
 
 		},
 		actions: {
@@ -26,6 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+
 			login: async (mail, password) => {
 				try {
 
@@ -50,6 +53,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			}
 
+
+				} catch (error) {
+					console.error("hubo un error en el login", error)
+				}
+			},
 		}
 	};
 };
