@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: "",
 			currentUser: "",
-
+			rutinas: [
+			],
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -50,6 +51,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error)
 					return false
+				}
+			},
+
+			todasLasRutinas: async () =>{
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "api/all_routines");
+					const datos = await resp.json();
+					console.log(datos);
+					setStore( {rutinas: datos});
+					return datos;
+				} catch (error) {
+					console.error('Error al obtener datos:', error);
+					throw error;
 				}
 			}
 		}
