@@ -52,12 +52,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false
 				}
 			}
-
-
-				} catch (error) {
-					console.error("hubo un error en el login", error)
-				}
-			},
 		}
 	};
 };
