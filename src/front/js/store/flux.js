@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			registrarse: async (nombre, apellido, email, password) => {
 				try {
-					 await fetch(process.env.BACKEND_URL + "api/singup", {
+					await fetch(process.env.BACKEND_URL + "api/singup", {
 						method: "POST",
 						body: JSON.stringify({
 							first_name: nombre,
@@ -28,28 +28,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			iniciarSesion: async (email, password) =>{
-				try {
-					const resp = await fetch(process.env.BACKEND_URL + "api/login",{
-						method: 'POST',
-						headers: {
-							"Content-Type": "application/json",
-						},
-						body: JSON.stringify({
-							"email": email,
-							"password": password,
-						})
-					})
 
-					if (resp.status !== 200){
-						alert("Error en los datos");
-						return false
+			login: async (mail, password) => {
+				try {
+
+
+					const response = await fetch(process.env.BACKEND_URL + "api/login", {
+						method: "POST",
+						body: JSON.stringify({
+							email: mail,
+							password: password,
+						}),
+						headers: { "Content-Type": "application/json" }
+					})
+					console.log(response)
+					if (response.status === 200) {
+						const data = await response.json()
+						localStorage.setItem("token", data.access_token)
+						return true
 					}
-					alert("logueado exitosamente")
-					const data = await resp.json();
-					localStorage.setItem("token", data.access_token)
-					setStore({token: data.access_token})
-					setStore({currentUser: email})
+				} catch (error) {
+					console.log(error)
+					return false
+				}
+			}
+
 
 				} catch (error) {
 					console.error("hubo un error en el login", error)

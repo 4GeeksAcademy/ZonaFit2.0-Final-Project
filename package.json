@@ -80,6 +80,7 @@
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
 		"react-toastify": "^10.0.4",
+		"sweetalert2": "^11.10.5",
 		"toast": "^0.5.4"
 	}
 }
