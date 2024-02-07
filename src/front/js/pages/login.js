@@ -36,8 +36,7 @@ export const Login = () => {
         <div className="container d-flex justify-content-center">
 
 
-	    return (
-        <div className="container">
+	  
             <div className="row">
                 <div className="col">
                     <div className="logo-container">
