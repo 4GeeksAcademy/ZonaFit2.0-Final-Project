@@ -15,8 +15,9 @@ import { Login } from "./pages/login";
 import { Recordar } from "./pages/recordar";
 import { Perfil } from "./pages/perfil";
 import { Editar_perfil } from "./pages/editar_perfil";
-//import { RoutineCard } from "./component/RoutineCard.js";  // esta ruta es temporal solo para pruebas de la carta luego debo hacer un componente aparte
 import { Rutinas } from "./pages/Rutinas.js";
+import { ExerciseList } from "./component/ExerciseList.js";
+
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -41,6 +42,7 @@ const Layout = () => {
                         <Route element={<Perfil />} path="/perfil" />
                         <Route element={<Editar_perfil />} path="/editar_perfil" />
                         <Route element={<Rutinas/>} path="/rutinas" />
+                        <Route element={<ExerciseList/>} path="/exercise_list" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

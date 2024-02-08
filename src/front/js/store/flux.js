@@ -29,7 +29,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-
 			login: async (mail, password) => {
 				try {
 

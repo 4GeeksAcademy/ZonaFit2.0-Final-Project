@@ -3,23 +3,24 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
-export const RoutineCard = (props) => {
+export const ExerciseCard = () => {
 
-    const { store, actions } = useContext(Context)
+    // const { store, actions } = useContext(Context)
 
     return (
-        <div className="card text-bg-dark p-0">
-            <img src={props.img} className="card-img" alt="..."/>
-                <div className="card-img-overlay">
-                    <h5 className="card-title text-light fw-bold mb-1">{props.nivel}</h5>
-                    <p className="text-left text-light mb-2">{props.nombre}</p>
-                    <p className="text-left text-light mb-0">Equipo completo</p>
-                    <p className="text-left text-light mb-0">{props.tipoDeEntrenamiento}</p>
-                    <p className="text-left text-light mb-1">Total rutinas: 2</p>
-                    <div className="d-flex flex-row-reverse mt-1">
-                        <button className="btn btn-warning">Iniciar</button>
+        <div className="card m-3" >
+            <div className="row g-0">
+                <div className="col-md-4">
+                    <img src="https://place-hold.it/200x200" className="img-fluid rounded-start"/>
+                </div>
+                <div className="col-md-8">
+                    <div className="card-body">
+                        <h5 className="card-title">Nombre ejercicio</h5>
+                        <p className="card-text">Nro de Sets</p>
+                        <p className="card-text"><small className="text-body-secondary">Nro de repeticiones</small></p>
                     </div>
                 </div>
+            </div>
         </div>
     )
 };
