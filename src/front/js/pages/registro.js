@@ -62,30 +62,30 @@ export const Registro = () => {
                     <div className="card-body">
 
                         <form>
-                            <div className="form-floating mb-3">
+                            <div className="mb-3">
                                 <label htmlFor="name">Nombre</label>
                                 <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} className="form-control" id="name" placeholder="Nepomuceno Alberto" />
                             </div>
 
 
-                            <div className="form-floating mb-3">
+                            <div className="mb-3">
                                 <label htmlFor="lastname">Apellido</label>
                                 <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} className="form-control" id="lastname" placeholder="Nepomuceno Alberto" />
                             </div>
 
 
-                            <div className="form-floating mb-3">
+                            <div className="mb-3">
                                 <label htmlFor="email">Email</label>
                                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="email" placeholder="name@example.com" />
                             </div>
 
 
-                            <div className="form-floating mb-3">
+                            <div className=" mb-3">
                                 <label htmlFor="password">Contraseña</label>
                                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" id="password" placeholder="*****" />
                             </div>
 
-                            <div className="form-floating mb-3">
+                            <div className="mb-3">
                                 <label htmlFor="confirm-password">Confirmar Contraseña</label>
                                 <input type="password" value={confirmar} onChange={(e) => setConfirmar(e.target.value)} className="form-control" id="confirm-password" placeholder="*****" />
                             </div>

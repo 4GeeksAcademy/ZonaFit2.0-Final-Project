@@ -36,7 +36,7 @@ export const Login = () => {
         <div className="container d-flex justify-content-center">
 
 
-	  
+
             <div className="row">
                 <div className="col">
                     <div className="logo-container">
@@ -49,13 +49,13 @@ export const Login = () => {
                     <div className="card-body">
 
                         <form >
-                            <div className="form-floating form-label mb-5">
+                            <div className="mb-5">
                                 <label htmlFor="email">Email</label>
                                 <input type="email" value={mail} onChange={(e) => setMail(e.target.value)} className="form-control" id="email" placeholder="name@example.com" />
 
 
                             </div>
-                            <div className="form-floating form-label mb-5">
+                            <div className=" mb-5">
 
                                 <label htmlFor="password">Contraseña</label>
                                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" id="password" placeholder="*******" />
