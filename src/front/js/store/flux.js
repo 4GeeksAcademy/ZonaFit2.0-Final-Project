@@ -71,7 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "api/all_exercises/" + id);
 					const datos = await resp.json()
-					// setStore({ ejercicios: datos });
+					setStore({ ejercicios: datos });
 					return datos;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);

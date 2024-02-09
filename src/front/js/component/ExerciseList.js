@@ -5,7 +5,7 @@ import { Context } from "../store/appContext.js";
 export const ExerciseList = (props) => {
     const { store, actions } = useContext(Context);
     const [listaEjercicios, setListaEjercicios] = useState(null)
-
+    
     useEffect(() => {
         async function aux() {
             await actions.todosLosEjerciciosDeUnaRutina(props.idRutina)
