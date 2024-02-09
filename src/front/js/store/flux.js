@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentUser: "",
 			rutinas: [
 			],
+			usuario: {}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -32,7 +33,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login: async (mail, password) => {
 				try {
 
-
 					const response = await fetch(process.env.BACKEND_URL + "api/login", {
 						method: "POST",
 						body: JSON.stringify({
@@ -41,10 +41,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}),
 						headers: { "Content-Type": "application/json" }
 					})
-					console.log(response)
+					// console.log(response)
 					if (response.status === 200) {
 						const data = await response.json()
+						console.log(data.user)
 						localStorage.setItem("token", data.access_token)
+						setStore({ usuario: data.user })
 						return true
 					}
 				} catch (error) {
@@ -53,17 +55,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			todasLasRutinas: async () =>{
+			todasLasRutinas: async () => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "api/all_routines");
 					const datos = await resp.json();
 					console.log(datos);
-					setStore( {rutinas: datos});
+					setStore({ rutinas: datos });
 					return datos;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);
 					throw error;
 				}
+			},
+
+			logout: () => {
+				localStorage.removeItem("token")
+				return false;
+			},
+
+			obtenerDatosUsuario: async (id) => {
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "api/user" + id);
+					const data = await resp.json()
+					setStore({ usuario: data })
+					return data;
+				} catch (error) {
+					console.error('Error al obtener los datos: ', error);
+					throw error;
+				}
+
 			}
 		}
 	};
