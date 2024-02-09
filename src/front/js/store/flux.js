@@ -3,10 +3,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: "",
 			currentUser: "",
-			rutinas: [
-			],
-			ejercicios: [
-			],
+			rutinas: [],
+			ejercicios: [],
+			rutina: {},
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -84,6 +83,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "api/all_routines/" + id);
 					const datos = await resp.json()
+					setStore({ rutina: datos })
 					return datos;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);
