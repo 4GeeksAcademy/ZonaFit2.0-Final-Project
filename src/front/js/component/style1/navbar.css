@@ -1,0 +1,68 @@
+.navbar {
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.91);
+}
+
+.navbar-t {
+    margin-left: auto;
+
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    margin: 0 13px;
+    font-size: 15px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgb(255, 123, 0);
+
+}
+
+.navbar-brand {
+    font-size: 28px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.menu {
+    color: rgb(255, 123, 0);
+}
+
+.navbar-collapse {
+    align-items: center;
+    text-align: center;
+    padding: 16px 0;
+    text-align: center;
+}
+
+.navbar-t li {
+    margin: 0 3px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.navbar-toggler {
+    color: rgb(255, 123, 0);
+}
+
+.navbar-social {
+
+    flex-direction: row;
+    justify-content: center;
+}
+
+.navbar-social i {
+    padding: 10px;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar-social i:hover {
+    color: rgb(255, 123, 0);
+}
