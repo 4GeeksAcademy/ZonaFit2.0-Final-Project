@@ -3,9 +3,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: "",
 			currentUser: "",
-			rutinas: [
-			],
-			usuario: {}
+			rutinas: [],
+			ejercicios: [],
+			rutina: {},
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -33,6 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login: async (mail, password) => {
 				try {
 
+
 					const response = await fetch(process.env.BACKEND_URL + "api/login", {
 						method: "POST",
 						body: JSON.stringify({
@@ -41,12 +42,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}),
 						headers: { "Content-Type": "application/json" }
 					})
-					// console.log(response)
+					console.log(response)
 					if (response.status === 200) {
 						const data = await response.json()
-						console.log(data.user)
 						localStorage.setItem("token", data.access_token)
-						setStore({ usuario: data.user })
 						return true
 					}
 				} catch (error) {
@@ -68,23 +67,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			logout: () => {
-				localStorage.removeItem("token")
-				return false;
+			todosLosEjerciciosDeUnaRutina: async (id) => {
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "api/all_exercises/" + id);
+					const datos = await resp.json()
+					setStore({ ejercicios: datos });
+					return datos;
+				} catch (error) {
+					console.error('Error al obtener datos:', error);
+					throw error;
+				}
 			},
 
-			obtenerDatosUsuario: async (id) => {
+			unaRutina: async (id) => {
 				try {
-					const resp = await fetch(process.env.BACKEND_URL + "api/user" + id);
-					const data = await resp.json()
-					setStore({ usuario: data })
-					return data;
+					const resp = await fetch(process.env.BACKEND_URL + "api/all_routines/" + id);
+					const datos = await resp.json()
+					setStore({ rutina: datos })
+					return datos;
 				} catch (error) {
-					console.error('Error al obtener los datos: ', error);
+					console.error('Error al obtener datos:', error);
 					throw error;
 				}
 
-			}
+			},
 		}
 	};
 };
