@@ -5,6 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentUser: "",
 			rutinas: [
 			],
+			ejercicios: [
+			],
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -53,18 +55,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			todasLasRutinas: async () =>{
+			todasLasRutinas: async () => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "api/all_routines");
 					const datos = await resp.json();
 					console.log(datos);
-					setStore( {rutinas: datos});
+					setStore({ rutinas: datos });
 					return datos;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);
 					throw error;
 				}
-			}
+			},
+
+			todosLosEjerciciosDeUnaRutina: async (id) => {
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "api/all_exercises/" + id);
+					const datos = await resp.json()
+					setStore({ ejercicios: datos });
+					return datos;
+				} catch (error) {
+					console.error('Error al obtener datos:', error);
+					throw error;
+				}
+			},
+
+			unaRutina: async (id) => {
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "api/all_routines/" + id);
+					const datos = await resp.json()
+					return datos;
+				} catch (error) {
+					console.error('Error al obtener datos:', error);
+					throw error;
+				}
+
+			},
 		}
 	};
 };
