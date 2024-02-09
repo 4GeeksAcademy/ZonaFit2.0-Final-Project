@@ -42,7 +42,11 @@ def user_login():
         return jsonify({"msg": "Bad username or password"}), 401
 
     access_token = create_access_token(identity=email) # nota al editor aca identity se guarda como la variable email, asi que cuando se llame con un get_jwt_identity tendra ese valor en este caso el del email
-    return jsonify(access_token=access_token)
+    response_body = {
+        "user" : user.serialize(),
+        "access_token" : access_token
+    }
+    return jsonify(response_body)
 
 # Ruta Sing Up user sin doble autenticacion (confirmacion x email) Probado sin la confirmacion de email
 
