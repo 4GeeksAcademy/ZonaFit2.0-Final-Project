@@ -16,19 +16,24 @@ export const Editar_perfil = () => {
                     <h2 className="text-center">Editar perfil</h2>
                     <form method="POST" action="/editar-perfil">
                         <div className="form-group mb-3">
-                            <label for="nombre">Nombre completo</label>
+                            <label htmlFor="nombre">Nombre completo</label>
                             <input type="text" className="form-control" id="nombre" placeholder="Nombre completo" />
                         </div>
                         <div className="form-group mb-3">
-                            <label for="email">Correo electrónico</label>
+                            <label htmlFor="email">Correo electrónico</label>
                             <input type="email" className="form-control" id="email" placeholder="Correo electrónico" />
                         </div>
+
                         <div className="form-group mb-3">
-                            <label for="password">Contraseña actual</label>
+                            <label htmlFor="password">Contraseña actual</label>
                             <input type="password" className="form-control" id="password" placeholder="Contraseña actual" />
                         </div>
                         <div className="form-group mb-3">
-                            <label for="nueva-password">Nueva contraseña</label>
+                            <label htmlFor="password">Contraseña actual</label>
+                            <input type="password" className="form-control" id="password" placeholder="Contraseña actual" />
+                        </div>
+                        <div className="form-group mb-3">
+                            <label htmlFor="nueva-password">Nueva contraseña</label>
                             <input type="password" className="form-control" id="nueva-password" placeholder="Nueva contraseña" />
                         </div>
 
