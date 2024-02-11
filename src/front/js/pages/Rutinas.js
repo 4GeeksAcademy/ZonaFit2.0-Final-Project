@@ -20,7 +20,7 @@ export const Rutinas = () => {
             <h2>Rutinas</h2>
             <div className="d-flex flex-row overflow-scroll" >
                 {listaRutinas && listaRutinas.map((item, index) => (
-                    <RoutineCard key={index} nombre={item.routine_name} nivel={item.difficulty_level} 
+                    <RoutineCard key={index} id={item.id} nombre={item.routine_name} nivel={item.difficulty_level} 
                     tipoDeEntrenamiento={item.type_of_routine} img={item.picture}/>
                 ))}
             </div>

@@ -19,7 +19,7 @@ export const ExerciseList = (props) => {
             <h2>Ejercicios</h2>
             <div className="d-flex flex-row overflow-scroll" >
                 {listaEjercicios && listaEjercicios.map((item, index) => (
-                    <ExerciseCard key={index} />
+                    <ExerciseCard key={index} nombre={item.nombreEjercicio} idEjercicio={item.idEjercicio} sets={item.series} repeticiones={item.repeticiones} imagen={item.imagen} />
                 ))}
             </div>
         </div>

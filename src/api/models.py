@@ -135,7 +135,6 @@ class Routines(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     # relacional
     user = db.relationship("User", back_populates="routines")
-    #
     routinesAux = db.relationship("RoutinesAux")
 
     def __repr__(self):
