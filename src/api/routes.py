@@ -182,12 +182,36 @@ def get_all_users():
     
     return jsonify(results), 200
 
-@api.route('/routines+aux', methods=['GET'])
+@api.route('/routines_aux', methods=['GET'])  # cambiar la ruta no poner + agregar filtrado para obtener datos de una rutina en particular y no todas
 def get_all_complete_routines():
 
-    resultados = db.session.query(Routines, RoutinesAux).join(Routines, RoutinesAux.routine_id == Routines.id)
+    resultados = db.session.query(Routines, RoutinesAux, Exercises).join(Routines, RoutinesAux.routine_id == Routines.id).join(Exercises, RoutinesAux.exercise_id == Exercises.id).all()
 
-    results = list(map(lambda routine: routine.serialize(), resultados ))
+    results = list(map(lambda routine:{
+        "idRutina": routine[0].id,
+        "name": routine[0].routine_name,
+        "idRutinaAux": routine[1].id,
+        "reps_by_exercise": routine[1].reps_by_exercise,
+        "idExercise": routine[2].id,
+        "exercise_name": routine[2].exercise_name,
+        } , resultados))
+
+    return jsonify(results), 200
+
+@api.route('all_exercises_from_one_routine/<int:id>', methods=['GET'])
+def get_all_exercises_from_one_routine(id):
+
+    resultados = db.session.query(RoutinesAux, Exercises).filter(RoutinesAux.routine_id == id).join(Exercises, RoutinesAux.exercise_id == Exercises.id).all()
+    
+    results = list(map(lambda routine:{
+        "idRutina": routine[0].routine_id,
+        "idRutinaAux": routine[0].id,
+        "repeticiones": routine[0].reps_by_exercise,
+        "series": routine[0].num_of_series,
+        "idEjercicio": routine[1].id,
+        "imagen": routine[1].img_source,
+        "nombreEjercicio": routine[1].exercise_name, 
+        } , resultados))
 
     return jsonify(results), 200
 

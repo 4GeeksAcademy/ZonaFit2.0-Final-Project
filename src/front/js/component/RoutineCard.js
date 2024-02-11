@@ -5,8 +5,6 @@ import { Context } from "../store/appContext";
 
 export const RoutineCard = (props) => {
 
-    const { store, actions } = useContext(Context)
-
     return (
         <div className="card text-bg-dark p-0">
             <img src={props.img} className="card-img" alt="..."/>
@@ -17,7 +15,7 @@ export const RoutineCard = (props) => {
                     <p className="text-left text-light mb-0">{props.tipoDeEntrenamiento}</p>
                     <p className="text-left text-light mb-1">Total rutinas: 2</p>
                     <div className="d-flex flex-row-reverse mt-1">
-                        <button className="btn btn-warning">Iniciar</button>
+                        <Link className="btn btn-warning" to={/rutinas_y_ejercicios/ + props.id} >Iniciar Rutinas</Link>
                     </div>
                 </div>
         </div>

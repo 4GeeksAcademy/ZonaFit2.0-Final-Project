@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			rutinas: [],
 			ejercicios: [],
 			rutina: {},
+			ejercicio: {},
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -69,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			todosLosEjerciciosDeUnaRutina: async (id) => {
 				try {
-					const resp = await fetch(process.env.BACKEND_URL + "api/all_exercises/" + id);
+					const resp = await fetch(process.env.BACKEND_URL + "api/all_exercises_from_one_routine/" + id);
 					const datos = await resp.json()
 					setStore({ ejercicios: datos });
 					return datos;
@@ -90,6 +91,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					throw error;
 				}
 
+			},
+
+			unEjercicio: async (id) =>{
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "api/exercise/" +id);
+					const datos = await resp.json();
+					console.log('metodo exitoso')
+					setStore({ ejercicio: datos})
+					return datos;
+				} catch (error) {
+					console.error('Error al obtener datos:', error);
+					throw error;
+				}
 			},
 		}
 	};
