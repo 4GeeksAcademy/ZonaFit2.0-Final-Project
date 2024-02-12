@@ -198,6 +198,8 @@ def get_all_complete_routines():
 
     return jsonify(results), 200
 
+# Ruta para la pantalla rutinas y ejercicios
+
 @api.route('all_exercises_from_one_routine/<int:id>', methods=['GET'])
 def get_all_exercises_from_one_routine(id):
 
@@ -215,6 +217,29 @@ def get_all_exercises_from_one_routine(id):
 
     return jsonify(results), 200
 
+# Ruta para la pantalla ejercicio
+
+@api.route('/exercise_view/<int:id>', methods=['GET'])
+def check_exercise_view(id):
+
+    resultados = db.session.query(Routines, RoutinesAux, Exercises, Muscles, Equipment).filter(RoutinesAux.routine_id == id).join(Routines, RoutinesAux.routine_id == Routines.id).join(Exercises, RoutinesAux.exercise_id == Exercises.id).join(Muscles, Exercises.muscle_id == Muscles.id).join(Equipment, Exercises.equipment_id == Equipment.id).all()
+
+    results = list(map(lambda routine:{
+        "idRutina": routine[0].id,
+        "nombreRutina": routine[0].routine_name,
+        "idRutinaAux": routine[1].id,
+        "repeticiones": routine[1].reps_by_exercise,
+        "series": routine[1].num_of_series,
+        "idExercise": routine[2].id,
+        "nombreEjercicio": routine[2].exercise_name,
+        "descripcion": routine[2].description,
+        "video": routine[2].video_source,
+        "dificultad": routine[2].difficulty_level,
+        "muscle_name": routine[3].muscle_name,
+        "equipment_name": routine[4].equipment_name,
+        } , resultados))
+
+    return jsonify(results), 200
 
 @api.route('/routines', methods=['GET'])
 def get_user_routines():
