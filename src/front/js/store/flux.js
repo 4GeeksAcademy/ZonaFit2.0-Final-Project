@@ -7,6 +7,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			ejercicios: [],
 			rutina: {},
 			ejercicio: {},
+			usuario: {},
+			perfil: {}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -43,9 +45,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}),
 						headers: { "Content-Type": "application/json" }
 					})
-					console.log(response)
+
 					if (response.status === 200) {
 						const data = await response.json()
+						setStore({ usuario: data.user })
 						localStorage.setItem("token", data.access_token)
 						return true
 					}
@@ -93,18 +96,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			unEjercicio: async (id) =>{
+			unEjercicio: async (id) => {
 				try {
-					const resp = await fetch(process.env.BACKEND_URL + "api/exercise/" +id);
+					const resp = await fetch(process.env.BACKEND_URL + "api/exercise/" + id);
 					const datos = await resp.json();
 					console.log('metodo exitoso')
-					setStore({ ejercicio: datos})
+					setStore({ ejercicio: datos })
 					return datos;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);
 					throw error;
 				}
 			},
+
+			obtenerUsuario: async (id) => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "api/user/" + id)
+					const data = await response.json()
+					setStore({ perfil: data })
+				} catch (error) {
+					console.log(error)
+				}
+			},
+
+			editarUsuario: async (id, nombre, apellido, email, genero, birthdate, peso, altura, meta, new_password) => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "api/user/" + id, {
+						method: "PUT",
+						body: JSON.stringify({
+							first_name: nombre,
+							last_name: apellido,
+							email: email,
+							birthdate: birthdate,
+							gender: genero,
+							weight: peso,
+							height: altura,
+							goal: meta,
+							password: new_password
+						}),
+						headers: {
+							"Content-Type": "application/json"
+						}
+					})
+					const data = await response.json()
+					setStore({ perfil: data })
+				} catch (error) {
+					console.log(error)
+				}
+			}
 		}
 	};
 };
