@@ -163,6 +163,21 @@ def update_user(user_id):
         if 'user_type' in body:
             user.user_type = body['user_type']
 
+        if 'birthdate' in body:
+            user.birthdate = body['birthdate']
+
+        if 'weight' in body:
+            user.weight = body['weight']
+
+        if 'height' in body:
+            user.height = body['height']
+
+        if 'gender' in body:
+            user.gender = body['gender']    
+
+        if 'goal' in body:
+            user.goal = body['goal']
+
         db.session.commit()
         
         return jsonify({"msg": "The user was succesfully updated" }) , 200
