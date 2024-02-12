@@ -21,7 +21,7 @@ export const Login = () => {
         if (mail != "" & password != "") {
             let resp = await actions.login(mail, password)
             if (resp) {
-                navigate("/perfil")
+                  navigate("/perfil")
             }
         } else {
             Swal.fire({

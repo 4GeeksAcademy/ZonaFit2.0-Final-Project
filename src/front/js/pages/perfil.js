@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/perfil.css";
 import logo from "../../img/logo.png"
@@ -9,10 +9,16 @@ export const Perfil = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate()
 
+    useEffect(() => {
+
+    }, [])
+
     function logout() {
         actions.logout()
         navigate("/")
     }
+
+    console.log(store.usuario)
     return (
         <div className="container">
             <div className="logo-container">
@@ -24,7 +30,7 @@ export const Perfil = () => {
                     <p className="text-center mt-3">Nombre: <strong>{store.usuario.first_name} {store.usuario.last_name}</strong></p>
                     <p className="text-center">Correo electrónico: <strong>{store.usuario.email}</strong></p>
                     <div className="d-flex justify-content-center gap-3 mt-4">
-                        <Link to={"/editar_perfil"} className="btn btn-primary">Editar perfil</Link>
+                        <Link to={"/editar_perfil/" + store.usuario.id} className="btn btn-primary">Editar perfil</Link>
                         <button className="btn btn-ghost" onClick={logout}>Salir de cuenta</button>
 
                     </div>
