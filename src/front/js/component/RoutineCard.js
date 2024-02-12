@@ -1,9 +1,14 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
 
+// ruta 1 = /rutinas ruta 2 = rutinas_y_ejercicios/
 
 export const RoutineCard = (props) => {
+
+    const location = useLocation();
+    const rutaUno = '/rutinas';
+    console.log(location.pathname)
 
     return (
         <div className="card text-bg-dark p-0">
@@ -15,7 +20,7 @@ export const RoutineCard = (props) => {
                     <p className="text-left text-light mb-0">{props.tipoDeEntrenamiento}</p>
                     <p className="text-left text-light mb-1">Total rutinas: 2</p>
                     <div className="d-flex flex-row-reverse mt-1">
-                        <Link className="btn btn-warning" to={/rutinas_y_ejercicios/ + props.id} >Iniciar Rutinas</Link>
+                        {location.pathname === rutaUno ? <Link className="btn btn-warning" to={/rutinas_y_ejercicios/ + props.id} >Iniciar Rutina</Link> : <Link className="btn btn-warning" to={/ejercicio/ + props.id} >Iniciar Rutina</Link> }
                     </div>
                 </div>
         </div>
