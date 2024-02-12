@@ -7,12 +7,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			ejercicios: [],
 			rutina: {},
 			ejercicio: {},
-<<<<<<< HEAD
 			rutinaDetallada: [],
-=======
 			usuario: {},
 			perfil: {},
->>>>>>> a51346c04fba2b12f337a194732903c7e0813f66
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -113,7 +111,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-<<<<<<< HEAD
+
 			detallesDeUnaRutina: async (id) => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "api/exercise_view/" + id );
@@ -126,7 +124,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					throw error;
 				}
 			},
-=======
+
 			obtenerUsuario: async (id) => {
 				try {
 					const response = await fetch(process.env.BACKEND_URL + "api/user/" + id)
@@ -162,7 +160,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
->>>>>>> a51346c04fba2b12f337a194732903c7e0813f66
 		}
 	};
 };

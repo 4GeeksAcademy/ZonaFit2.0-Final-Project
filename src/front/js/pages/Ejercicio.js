@@ -7,7 +7,7 @@ export const Ejercicio = () => {
     const { id } = useParams();
     const [ ejercicio, setEjercicio] = useState(null);
     const [ contador, setContador ] = useState(0);
-    const [ RepContador, setRepContador ] = useState(240)
+    const [ RepContador, setRepContador ] = useState(1)
 
     useEffect(() => {
         const fetchData = async () => {
