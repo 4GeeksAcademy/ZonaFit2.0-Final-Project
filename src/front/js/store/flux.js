@@ -118,7 +118,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error('Error al obtener datos:', error);
 					throw error;
 				}
-			}
+			},
 		}
 	};
 };
