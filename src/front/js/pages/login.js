@@ -21,7 +21,14 @@ export const Login = () => {
         if (mail != "" & password != "") {
             let resp = await actions.login(mail, password)
             if (resp) {
-                  navigate("/perfil")
+                navigate("/perfil")
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Datos erroneos",
+
+                });
             }
         } else {
             Swal.fire({
@@ -37,14 +44,18 @@ export const Login = () => {
 
 
 
-            <div className="row">
+            {/* <div className="row">
                 <div className="col">
                     <div className="logo-container">
                         <img src={logo} alt="logo-zonafit" />
                     </div>
                 </div>
+            </div> */}
+            <div className="title" style={{ marginTop: "15px" }}>
+                <img src={logo} alt="logo-zonafit" />
+                <h1>Iniciar sesión</h1>
             </div>
-            <div className="col-md-6 col-lg-4">
+            <div className="col-md-6 col-lg-4" style={{ marginTop: "15px" }}>
                 <div className="card my-5">
                     <div className="card-body">
 

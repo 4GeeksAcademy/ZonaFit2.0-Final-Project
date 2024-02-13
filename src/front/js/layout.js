@@ -18,7 +18,7 @@ import { Editar_perfil } from "./pages/editar_perfil";
 import { Rutinas } from "./pages/Rutinas.js";
 import { RutinaYEjercicios } from "./pages/RutinaYEjercicios.js";
 import { Ejercicio } from "./pages/Ejercicio.js"
-
+import { Recetas } from "./pages/recetas.js"
 
 //create your first component
 const Layout = () => {
@@ -45,7 +45,10 @@ const Layout = () => {
                         <Route element={<Editar_perfil />} path="/editar_perfil/:id" />
                         <Route element={<Rutinas />} path="/rutinas" />
                         <Route element={<RutinaYEjercicios />} path="/rutinas_y_ejercicios/:id" />
-                        <Route element={<Ejercicio />} path="/ejercicio/:id"/>
+                        <Route element={<Ejercicio />} path="/ejercicio/:id" />
+                        <Route element={<Recetas />} path="/recetas" />
+
+
                     </Routes>
                     <Footer />
                 </ScrollToTop>
