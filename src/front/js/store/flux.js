@@ -37,8 +37,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			login: async (mail, password) => {
 				try {
-
-
 					const response = await fetch(process.env.BACKEND_URL + "api/login", {
 						method: "POST",
 						body: JSON.stringify({
@@ -53,12 +51,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ usuario: data.user })
 						setStore({ auth: true })
 						localStorage.setItem("token", data.access_token)
+						setStore({token: data.access_token})
 						return true
 					}
 				} catch (error) {
 					console.log(error)
 					return false
 				}
+			},
+
+			logout: () => {
+				localStorage.removeItem("token");   
+				setStore({token: null})	
 			},
 
 			todasLasRutinas: async () => {
@@ -112,7 +116,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-
 			detallesDeUnaRutina: async (id) => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "api/exercise_view/" + id);
@@ -130,7 +133,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const response = await fetch(process.env.BACKEND_URL + "api/user/" + id)
 					const data = await response.json()
-					setStore({ perfil: data })
+					setStore({ usuario: data })
 				} catch (error) {
 					console.log(error)
 				}
@@ -138,28 +141,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			editarUsuario: async (id, nombre, apellido, email, genero, birthdate, peso, altura, meta, new_password) => {
 				try {
-					console.log("editar")
+					const bodyData = {
+						first_name: nombre ? nombre : undefined,
+						last_name: apellido ? apellido : undefined,
+						email: email ? email : undefined,
+						birthdate: birthdate ? birthdate : undefined,
+						gender: genero ? genero : undefined,
+						weight: peso ? peso : undefined,
+						height: altura ? altura : undefined,
+						goal: meta ? meta : undefined,
+						password: new_password ? new_password : undefined
+					};
+			
+					// Remove undefined properties from bodyData
+					const filteredBodyData = Object.fromEntries(Object.entries(bodyData).filter(([_, v]) => v !== undefined));
+			
 					const response = await fetch(process.env.BACKEND_URL + "api/user/" + id, {
 						method: "PUT",
-						body: JSON.stringify({
-							first_name: nombre,
-							last_name: apellido,
-							email: email,
-							birthdate: birthdate,
-							gender: genero,
-							weight: peso,
-							height: altura,
-							goal: meta,
-							password: new_password
-						}),
+						body: JSON.stringify(filteredBodyData),
 						headers: {
 							"Content-Type": "application/json"
 						}
-					})
-					const data = await response.json()
-					setStore({ perfil: data })
+					});
+					const data = await response.json();
+					setStore({ perfil: data });
+					// Additional setStore actions if needed
 				} catch (error) {
-					console.log(error)
+					console.log(error);
 				}
 			},
 

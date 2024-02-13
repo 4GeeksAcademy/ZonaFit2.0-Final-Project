@@ -1,54 +1,61 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const Ejercicio = () => {
     const { store, actions } = useContext(Context);
     const { id } = useParams();
-    const [ ejercicio, setEjercicio] = useState(null);
-    const [ contador, setContador ] = useState(0);
-    const [ RepContador, setRepContador ] = useState(1)
+    const navigate = useNavigate();
+    const [ejercicio, setEjercicio] = useState(null);
+    const [contador, setContador] = useState(0);
+    const [RepContador, setRepContador] = useState(1);
 
     useEffect(() => {
         const fetchData = async () => {
-          try {
-            const response = await actions.detallesDeUnaRutina(id);
-              setEjercicio(response);
-          } catch (error) {
-              console.error('Error fetching data:', error);
-          }
+            try {
+                const response = await actions.detallesDeUnaRutina(id);
+                setEjercicio(response);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
         };
-        fetchData();
-      }, []); 
-    
-      if (!ejercicio) {
+        if (store.token === "" || store.token === undefined) {
+            navigate('/')
+        }
+
+        else {
+            fetchData()
+        }
+    }, []);
+
+    if (!ejercicio) {
         return <div>Loading...</div>;
-      };
+    };
 
-      const handleExercise = () =>{
-        if (contador + 1 < ejercicio.length){
-          setContador(contador +1);
-        } 
-        else {
-          alert("Rutina Culminada loco, thumbs upp!!")
-        }
-      };
-
-      const handleRep = () => {
-        if ( RepContador < ejercicio[contador].series){
-          setRepContador( RepContador+1)
+    const handleExercise = () => {
+        if (contador + 1 < ejercicio.length) {
+            setContador(contador + 1);
         }
         else {
-          handleExercise()
-          if (contador + 1 < ejercicio.length){
-            setRepContador(1)
-            alert("pasaste al siguiene ejercicio flaco")
-          }  
+            alert("Rutina Culminada loco, thumbs upp!!")
         }
-      };
-  
-      return (
-        <div>
+    };
+
+    const handleRep = () => {
+        if (RepContador < ejercicio[contador].series) {
+            setRepContador(RepContador + 1)
+        }
+        else {
+            handleExercise()
+            if (contador + 1 < ejercicio.length) {
+                setRepContador(1)
+                alert("Set terminado Se pasa al siguiente ejercicio")
+            }
+        }
+    };
+
+    return (
+        <div className="pt-5 mt-5">
             <div className="d-flex text-light fs-3 justify-content-between" >
                 <p className="ms-5" > <strong> Rutina </strong> {ejercicio[contador].nombreRutina} </p>
                 <div className="me-5 "> Ejercicio: {contador + 1} de {ejercicio.length} </div>
@@ -66,11 +73,11 @@ export const Ejercicio = () => {
                     <p> Nivel de dificultad: {ejercicio[contador].dificultad} </p>
                     <div> Contador de sets {RepContador} de {ejercicio[contador].series} </div>
                     <p> Repeticiones por ejercicio: {ejercicio[contador].repeticiones} </p>
-                    <button onClick ={handleRep} >Siguiente Set</button>
+                    <button onClick={handleRep} >Siguiente Set</button>
                     <br />
                     <button onClick={handleExercise} >Siguiente ejercicio</button>
                 </div>
             </div>
         </div>
-      );
+    );
 }

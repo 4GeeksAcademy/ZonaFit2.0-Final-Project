@@ -59,18 +59,15 @@ export const Login = () => {
                 <div className="card my-5">
                     <div className="card-body">
 
-                        <form >
+                        <form>
                             <div className="mb-5">
                                 <label htmlFor="email">Email</label>
                                 <input type="email" value={mail} onChange={(e) => setMail(e.target.value)} className="form-control" id="email" placeholder="name@example.com" />
-
-
                             </div>
                             <div className=" mb-5">
 
                                 <label htmlFor="password">Contraseña</label>
                                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" id="password" placeholder="*******" />
-
 
                             </div>
                             <div className="d-flex justify-content-between align-items-center gap-3" >
