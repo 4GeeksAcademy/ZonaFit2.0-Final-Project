@@ -9,7 +9,7 @@ export const Editar_perfil = () => {
     const { store, actions } = useContext(Context);
     const { id } = useParams()
 
-    const [nombre, setNombre] = useState(store?.perfil.first_name)
+    const [nombre, setNombre] = useState(store.perfil?.first_name)
     const [apellido, setApellido] = useState("")
     const [genero, setGenero] = useState("")
     const [email, setEmail] = useState("")
@@ -26,8 +26,10 @@ export const Editar_perfil = () => {
 
     console.log(store.perfil)
 
-    const editar = async () => {
-        await actions.editarUsuario(id, nombre, apellido, email, genero, birthdate, peso, altura, meta, new_password)
+    const editar = async (e) => {
+        e.preventDefault()
+
+        // await actions.editarUsuario(id, nombre, apellido, email, genero, birthdate, peso, altura, meta, new_password)
     }
 
     return (
@@ -90,7 +92,7 @@ export const Editar_perfil = () => {
                         </div>
 
                         <div className="d-flex justify-content-center mt-4">
-                            <button onClick={editar} type="submit" className="btn btn-primary">Guardar cambios</button>
+                            <button onClick={(e) => editar(e)} type="submit" className="btn btn-primary">Guardar cambios</button>
                         </div>
                     </form>
                 </div>

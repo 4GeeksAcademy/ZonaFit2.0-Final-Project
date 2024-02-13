@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			rutinaDetallada: [],
 			usuario: {},
 			perfil: {},
-
+			auth: false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -51,6 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status === 200) {
 						const data = await response.json()
 						setStore({ usuario: data.user })
+						setStore({ auth: true })
 						localStorage.setItem("token", data.access_token)
 						return true
 					}
@@ -114,10 +115,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			detallesDeUnaRutina: async (id) => {
 				try {
-					const resp = await fetch(process.env.BACKEND_URL + "api/exercise_view/" + id );
+					const resp = await fetch(process.env.BACKEND_URL + "api/exercise_view/" + id);
 					const datos = await resp.json();
 					console.log("llamado exitoso");
-					setStore({ rutinaDetallada: datos})
+					setStore({ rutinaDetallada: datos })
 					return datos;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);
@@ -137,6 +138,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			editarUsuario: async (id, nombre, apellido, email, genero, birthdate, peso, altura, meta, new_password) => {
 				try {
+					console.log("editar")
 					const response = await fetch(process.env.BACKEND_URL + "api/user/" + id, {
 						method: "PUT",
 						body: JSON.stringify({
@@ -160,6 +162,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
+
+			logout: () => {
+				localStorage.removeItem("token")
+				setStore({ auth: false })
+			}
 		}
 	};
 };
