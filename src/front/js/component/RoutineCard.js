@@ -11,8 +11,8 @@ export const RoutineCard = (props) => {
     console.log(location.pathname)
 
     return (
-        <div className="card text-bg-dark p-0">
-            <img src={props.img} className="card-img" alt="..."/>
+        <div className="card text-bg-dark me-5 p-0 col-lg-4 class-r "  data-aos="fade-up" data-aos-duration="1000">
+            <img src={props.img} className="card-img rounded-4" alt="..."/>
                 <div className="card-img-overlay">
                     <h5 className="card-title text-light fw-bold mb-1">{props.nivel}</h5>
                     <p className="text-left text-light mb-2">{props.nombre}</p>

@@ -10,24 +10,26 @@ export const Editar_perfil = () => {
     const { id } = useParams()
 
     const [nombre, setNombre] = useState(store?.perfil.first_name)
-    const [apellido, setApellido] = useState("")
-    const [genero, setGenero] = useState("")
-    const [email, setEmail] = useState("")
-    const [birthdate, setBirthdate] = useState("")
-    const [peso, setPeso] = useState("")
-    const [altura, setAltura] = useState("")
-    const [meta, setMeta] = useState("")
-    const [password, setPassword] = useState("")
-    const [new_password, setNew_password] = useState("")
+    const [apellido, setApellido] = useState(undefined)
+    const [genero, setGenero] = useState(undefined)
+    const [email, setEmail] = useState(undefined)
+    const [birthdate, setBirthdate] = useState(undefined)
+    const [peso, setPeso] = useState(undefined)
+    const [altura, setAltura] = useState(undefined)
+    const [meta, setMeta] = useState(undefined)
+    const [password, setPassword] = useState(undefined)
+    const [new_password, setNew_password] = useState(undefined)
 
     useEffect(() => {
         actions.obtenerUsuario(id)
     }, [])
 
-    console.log(store.perfil)
+    // console.log(store.perfil)
 
     const editar = async () => {
         await actions.editarUsuario(id, nombre, apellido, email, genero, birthdate, peso, altura, meta, new_password)
+        actions.obtenerUsuario(id)
+        console.log('se llamo la funcion editar')
     }
 
     return (
@@ -37,8 +39,7 @@ export const Editar_perfil = () => {
             <div className="card my-5">
                 <div className="card-body">
                     <h2 className="text-center">Editar perfil</h2>
-                    <form>
-
+                    
                         <div className="form-group mb-3">
                             <label htmlFor="name">Nombres</label>
                             <input value={nombre} onChange={(e) => setNombre(e.target.value)} type="text" className="form-control" id="name" placeholder="Nombre" />
@@ -90,9 +91,9 @@ export const Editar_perfil = () => {
                         </div>
 
                         <div className="d-flex justify-content-center mt-4">
-                            <button onClick={editar} type="submit" className="btn btn-primary">Guardar cambios</button>
+                            <button onClick={editar} className="btn btn-primary">Guardar cambios</button>
                         </div>
-                    </form>
+                    
                 </div>
             </div>
         </div>

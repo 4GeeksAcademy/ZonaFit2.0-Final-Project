@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/perfil.css";
 import logo from "../../img/logo.png"
@@ -7,11 +7,15 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const Perfil = () => {
     const { store, actions } = useContext(Context);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [nombre, setNombre ] = useState("")
+   
 
     useEffect(() => {
-
+        if (store.token === "" || store.token === undefined) navigate('/')
+        
     }, [])
+
 
     function logout() {
         actions.logout()
