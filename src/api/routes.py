@@ -113,6 +113,18 @@ def get_exercise(exercise_id):
     return jsonify(result), 200
 
 # Ruta para menus en base a la comida del dia aca pendiente por los errores
+@api.route("/meals", methods=['GET'])
+def meals():
+
+    comidas = Meals.query.all()
+    if comidas == [] : 
+        return jsonify({
+            "msg": "No existen comidas"
+        })
+
+    results = list(map(lambda meal: meal.serialize(), comidas))
+
+    return jsonify(results), 200
 
 @api.route("/meals/<main_meals>" , methods=['GET'])
 def get_meals(main_meals):
