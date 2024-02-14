@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8fc7082a99b2
+Revision ID: 8d6692047495
 Revises: 
-Create Date: 2024-02-04 16:52:02.791660
+Create Date: 2024-02-14 14:06:45.132044
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8fc7082a99b2'
+revision = '8d6692047495'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -43,10 +43,12 @@ def upgrade():
     )
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_name', sa.String(length=120), nullable=False),
+    sa.Column('first_name', sa.String(length=120), nullable=False),
+    sa.Column('last_name', sa.String(length=120), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=80), nullable=False),
-    sa.Column('is_new', sa.Boolean(), nullable=True),
+    sa.Column('profile_picture', sa.String(length=200), nullable=True),
+    sa.Column('is_premium', sa.Boolean(), nullable=True),
     sa.Column('is_admin', sa.Boolean(), nullable=True),
     sa.Column('completed_routines', sa.Integer(), nullable=True),
     sa.Column('user_type', sa.String(length=40), nullable=True),
@@ -58,8 +60,7 @@ def upgrade():
     sa.Column('gender', sa.String(length=20), nullable=True),
     sa.Column('goal', sa.String(length=40), nullable=True),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('user_name')
+    sa.UniqueConstraint('email')
     )
     op.create_table('exercises',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -77,8 +78,12 @@ def upgrade():
     op.create_table('routines',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('routine_name', sa.String(length=40), nullable=True),
+    sa.Column('premium', sa.Boolean(), nullable=True),
     sa.Column('start_date', sa.Date(), nullable=True),
     sa.Column('final_date', sa.Date(), nullable=True),
+    sa.Column('picture', sa.String(length=200), nullable=True),
+    sa.Column('difficulty_level', sa.String(length=40), nullable=True),
+    sa.Column('type_of_routine', sa.String(length=40), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id'),

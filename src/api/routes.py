@@ -59,7 +59,7 @@ def new_user():
     user = User.query.filter_by(email=email).first() #reviso si existe ese email en la lista de usuarios
 
     if user is None:                                  # si no existe pues lo creo
-        data["is_new"] = True                         # asigno automaticamente que el usuario es nuevo
+        data["is_premium"] = False                    # asigno automaticamente que el usuario no es premium
         data["singup_date"] = datetime.now()          # asigno la fecha en la que se registro
         
         new_record = User(**data)

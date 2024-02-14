@@ -73,6 +73,7 @@
 		]
 	},
 	"dependencies": {
+		"aos": "^2.3.4",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-component": "^0.0.0",
