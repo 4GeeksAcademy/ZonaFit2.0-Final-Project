@@ -194,6 +194,10 @@ class Meals(db.Model):
     fats = db.Column(db.Float, unique=False)
     proteins = db.Column(db.Float, unique=False)
     recipe_instructions = db.Column(db.String(500), unique=False)
+    image = db.Column(db.String(200), unique=False )
+    calories = db.Column(db.Integer, unique=False)
+    time = db.Column(db.Time, unique=False)
+
 
     def __repr__(self):
         return '<Meals %r>' % self.meal
@@ -208,4 +212,7 @@ class Meals(db.Model):
             "fats": self.fats,
             "proteins": self.proteins,
             "recipe_instructions": self.recipe_instructions,
+            "image": self.image,
+            "calories": self.calories,
+            "time": self.time,
         }
