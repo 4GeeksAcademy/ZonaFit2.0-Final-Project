@@ -10,7 +10,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			rutinaDetallada: [],
 			usuario: {},
 			perfil: {},
-			auth: false
+			auth: false,
+			recetas: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -51,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ usuario: data.user })
 						setStore({ auth: true })
 						localStorage.setItem("token", data.access_token)
-						setStore({token: data.access_token})
+						setStore({ token: data.access_token })
 						return true
 					}
 				} catch (error) {
@@ -61,8 +62,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			logout: () => {
-				setStore({token: null})	
-				localStorage.removeItem("token")  	
+				localStorage.removeItem("token");
+				setStore({ token: null })
 			},
 
 			todasLasRutinas: async () => {
@@ -152,10 +153,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						goal: meta ? meta : undefined,
 						password: new_password ? new_password : undefined
 					};
-			
+
 					// Remove undefined properties from bodyData
 					const filteredBodyData = Object.fromEntries(Object.entries(bodyData).filter(([_, v]) => v !== undefined));
-			
+
 					const response = await fetch(process.env.BACKEND_URL + "api/user/" + id, {
 						method: "PUT",
 						body: JSON.stringify(filteredBodyData),
@@ -174,7 +175,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logout: () => {
 				localStorage.removeItem("token")
 				setStore({ auth: false })
-			}
+			},
+
+			obtenerTodasLasRecetas: async () => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "api/meals")
+					const data = await response.json()
+					setStore({ recetas: data })
+					return data
+				} catch (error) {
+					console.log(error)
+				}
+			},
 		}
 	};
 };
