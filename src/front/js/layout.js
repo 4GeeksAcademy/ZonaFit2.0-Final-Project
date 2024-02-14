@@ -19,6 +19,7 @@ import { Rutinas } from "./pages/Rutinas.js";
 import { RutinaYEjercicios } from "./pages/RutinaYEjercicios.js";
 import { Ejercicio } from "./pages/Ejercicio.js"
 import { Recetas } from "./pages/recetas.js"
+import { Pago } from "./pages/Pago.js";
 
 //create your first component
 const Layout = () => {
@@ -47,8 +48,7 @@ const Layout = () => {
                         <Route element={<RutinaYEjercicios />} path="/rutinas_y_ejercicios/:id" />
                         <Route element={<Ejercicio />} path="/ejercicio/:id" />
                         <Route element={<Recetas />} path="/recetas" />
-
-
+                        <Route element={<Pago />} path="/pagos" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

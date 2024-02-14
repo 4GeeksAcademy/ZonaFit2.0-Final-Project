@@ -12,7 +12,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     profile_picture = db.Column(db.String(200), unique=False)
-    is_new = db.Column(db.Boolean(), unique=False)
+    is_premium = db.Column(db.Boolean(), unique=False)
     is_admin = db.Column(db.Boolean(), unique=False)
     completed_routines = db.Column(db.Integer, unique=False)
     user_type = db.Column(db.String(40), unique=False)
@@ -35,7 +35,7 @@ class User(db.Model):
             "first_name": self.first_name,
             "last_name": self.last_name,
             "email": self.email,
-            "is_new": self.is_new,
+            "is_premium": self.is_premium,
             "is_admin": self.is_admin,
             "completed_routines": self.completed_routines,
             "user_type": self.user_type,
@@ -194,6 +194,10 @@ class Meals(db.Model):
     fats = db.Column(db.Float, unique=False)
     proteins = db.Column(db.Float, unique=False)
     recipe_instructions = db.Column(db.String(500), unique=False)
+    image = db.Column(db.String(200), unique=False )
+    calories = db.Column(db.Integer, unique=False)
+    time = db.Column(db.Time, unique=False)
+
 
     def __repr__(self):
         return '<Meals %r>' % self.meal
@@ -208,4 +212,7 @@ class Meals(db.Model):
             "fats": self.fats,
             "proteins": self.proteins,
             "recipe_instructions": self.recipe_instructions,
+            "image": self.image,
+            "calories": self.calories,
+            "time": self.time,
         }
