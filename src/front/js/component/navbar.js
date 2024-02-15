@@ -26,7 +26,7 @@ export const Navbar = () => {
 							<a className="nav-link" href="#about">sobre nosotros</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#className" >Clases</a>
+							<a className="nav-link" href="#class" >Clases</a>
 						</li>
 						<li className="nav-item">
 							<a className="nav-link" href="#sch">Schedules</a>
@@ -41,6 +41,9 @@ export const Navbar = () => {
 							<Link className="nav-link" to={'/login'}>Iniciar Sesion</Link>
 						</li>
 					</ul> : <ul className="navbar-nav navbar-t">
+						{ !store.usuario.is_premium ? <li className="nav-item">
+							<Link className="nav-link" to={'/pagos'}>Hazte Premium!</Link>
+						</li> : null }
 						<li className="nav-item">
 							<Link className="nav-link" to={'/rutinas'}>Rutinas</Link>
 						</li>

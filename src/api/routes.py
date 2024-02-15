@@ -154,7 +154,7 @@ def get_meal(meal_id):
 def update_user(user_id):
     user = User.query.filter_by(id = user_id).first()              # se busca en la base de datos el diccionario con el user requerido por el id que le pasamos de la ruta
     
-    if user is None:                                               # condicional si no existe el planeta por el id introducido se da el mensaje y codigo de error
+    if user is None:                                               # condicional si no existe el usuario por el id introducido se da el mensaje y codigo de error
         return jsonify({'message': 'the user doesnt exist'}), 404
 
     if request.method == 'PUT':
@@ -168,6 +168,9 @@ def update_user(user_id):
         
         if 'email' in body:
             user.email = body['email']
+
+        if 'is_premium' in body:
+            user.is_premium = body['is_premium']
         
         if 'password' in body:
             user.password = body['password']

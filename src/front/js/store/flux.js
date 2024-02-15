@@ -186,6 +186,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
+
+			hacerPremium: async (id) =>{
+				const resp = await fetch( process.env.BACKEND_URL + "api/user/" + id, {
+					method: "PUT",
+					body: JSON.stringify({is_premium: true}),
+					headers: {
+						"Content-Type": "application/json"
+					},
+				} )
+				const data = await resp.json();
+				return data
+			} 
 		}
 	};
 };
