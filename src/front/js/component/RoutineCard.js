@@ -42,7 +42,6 @@ export const RoutineCard = (props) => {
                     <h5 className="card-title text-light fw-bold mb-1">{props.nivel}</h5>
                     <p className="text-left text-light mb-2">{props.nombre}</p>
                     <p className="text-left text-light mb-0">{props.premium ? "Premium" : "Free" }</p>
-                    <p className="text-left text-light mb-2">{store.usuario.is_premium ? "usuario premium":"usuario pobre" }</p>
                     <p className="text-left text-light mb-0">{props.tipoDeEntrenamiento}</p>
                     <p className="text-left text-light mb-1">Total rutinas: 2</p>
                     <div className="d-flex flex-row-reverse mt-1">

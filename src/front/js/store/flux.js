@@ -63,7 +63,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			logout: () => {
 				localStorage.removeItem("token");
-				setStore({ token: null })
 			},
 
 			todasLasRutinas: async () => {

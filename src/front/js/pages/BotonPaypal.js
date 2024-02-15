@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const BotonPaypal = () => {
-
+    const navigate = useNavigate();
     const paypal = useRef();
 
     useEffect(() => {
@@ -25,8 +26,9 @@ export const BotonPaypal = () => {
                 return actions.order.capture().then(function (orderData) {
 
                     // Full available details
+                    //a
                     console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                    actions.redirect('para cuando haya sido exitosa la transaccion');
+                    navigate("/perfil");
                 });
             },
 

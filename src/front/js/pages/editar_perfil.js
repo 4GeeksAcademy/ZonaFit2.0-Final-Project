@@ -33,8 +33,8 @@ export const Editar_perfil = () => {
 
 
     const editar = async () => {
-        // await actions.editarUsuario(id, nombre, apellido, email, genero, birthdate, peso, altura, meta, new_password)
-        // actions.obtenerUsuario(id)
+        await actions.editarUsuario(id, nombre, apellido, email, genero, birthdate, peso, altura, meta, new_password)
+        actions.obtenerUsuario(id)
         console.log(nombre)
     }
 

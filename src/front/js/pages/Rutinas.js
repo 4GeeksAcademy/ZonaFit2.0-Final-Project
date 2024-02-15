@@ -24,7 +24,7 @@ export const Rutinas = () => {
 
 
     return (
-        <div class="home">
+        <div className="home">
             <div className="container pt-5 mt-5">
                 <h2 className="pt-5 mt-5" >Rutinas</h2>
                 <div className="d-flex pt-5 mt-5 flex-row overflow-scroll">
