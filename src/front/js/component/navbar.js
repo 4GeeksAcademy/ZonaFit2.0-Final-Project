@@ -7,7 +7,6 @@ export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const navigate = useNavigate();
 
-	const token = localStorage.getItem('token')
 	return (
 			<nav className="navbar navbar-expand-md mb-5 navbar-dark fixed-top">
 				<a className="navbar-brand" href="#home"><img src="/ZonaFit 2.0.png" alt="" /></a>
@@ -17,7 +16,7 @@ export const Navbar = () => {
 
 				{/* <!-- Navbar links --> Nota: el condicional debe cambiarse por el token de iniciar sesion uso de location es temporal */}
 				<div className="collapse navbar-collapse" id="collapsibleNavbar">
-					{  !token ? <ul className="navbar-nav navbar-t">
+					{  store.auth === false ? <ul className="navbar-nav navbar-t">
 						<li className="nav-item">
 							<a className="nav-link" href="#home">Home</a>
 						</li>
