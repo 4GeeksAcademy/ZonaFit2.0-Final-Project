@@ -195,8 +195,8 @@ class Meals(db.Model):
     proteins = db.Column(db.Float, unique=False)
     recipe_instructions = db.Column(db.String(500), unique=False)
     image = db.Column(db.String(200), unique=False )
-    calories = db.Column(db.Integer, unique=False)
-    time = db.Column(db.Time, unique=False)
+    calories = db.Column(db.Float, unique=False)
+    time = db.Column(db.Float, unique=False)
 
 
     def __repr__(self):
