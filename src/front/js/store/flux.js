@@ -188,6 +188,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+
+			hacerPremium: async (id) =>{
+				const resp = await fetch( process.env.BACKEND_URL + "api/user/" + id, {
+					method: "PUT",
+					body: JSON.stringify({is_premium: true}),
+					headers: {
+						"Content-Type": "application/json"
+					},
+				} )
+				const data = await resp.json();
+				return data
+			},
+
 			obtenerRecetaPorId: async (id) => {
 				try {
 					const response = await fetch(process.env.BACKEND_URL + "api/meals/" + id)
@@ -197,7 +210,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error)
 				}
-			}
+			},
 		}
 	};
 };

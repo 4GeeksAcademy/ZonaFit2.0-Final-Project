@@ -1,9 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Context } from '../store/appContext';
 
 export const BotonPaypal = () => {
+    const {actions, store} = useContext(Context)
     const navigate = useNavigate();
     const paypal = useRef();
+
+    console.log(store.usuario)
+
+    const actualizarApremium = async () =>{
+        await actions.hacerPremium(store.usuario.id)
+        await actions.obtenerUsuario(store.usuario.id)
+        navigate('/perfil')
+    }
 
     useEffect(() => {
         window.paypal.Buttons({
@@ -22,14 +32,8 @@ export const BotonPaypal = () => {
                 });
             },
 
-            onApprove: function (data, actions) {
-                return actions.order.capture().then(function (orderData) {
-
-                    // Full available details
-                    //a
-                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                    navigate("/perfil");
-                });
+            onApprove: function () {
+                actualizarApremium()
             },
 
             onError: function (err) {
@@ -45,3 +49,12 @@ export const BotonPaypal = () => {
         </div>
     );
 }
+
+
+
+// return actions.order.capture().then(function (orderData) {
+//     // Full available details
+//     navigate('/perfil')
+//     console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+    
+// });
