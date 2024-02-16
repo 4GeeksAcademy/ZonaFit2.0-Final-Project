@@ -21,14 +21,29 @@ export const Editar_perfil = () => {
     const [new_password, setNew_password] = useState(undefined)
 
     useEffect(() => {
-        const info = async () => {
-            let respuesta = await actions.obtenerUsuario(id)
-            if (respuesta) {
-                completar()
-            }
-        }
-        info()
+
+        infoUser()
     }, [])
+
+
+    const infoUser = async () => {
+        try {
+            const respuesta = await actions.obtenerUsuario(id)
+
+            setNombre(store.usuario.first_name || "")
+            setApellido(store.usuario.last_name || "")
+            setGenero(store.usuario.gender || "")
+            setEmail(store.usuario.email || "")
+            setBirthdate(store.usuario.birthdate || "")
+            setPeso(store.usuario.weight || "")
+            setAltura(store.usuario.height || "")
+            setMeta(store.usuario.meta || "")
+
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
 
 
 
@@ -38,18 +53,6 @@ export const Editar_perfil = () => {
         console.log(nombre)
     }
 
-    const completar = () => {
-        setNombre(store.usuario.first_name)
-        setApellido(store.usuario.last_name)
-        setGenero(store.usuario.gender)
-        setEmail(store.usuario.email)
-        setBirthdate(store.usuario.birthdate)
-        setPeso(store.usuario.weight)
-        setAltura(store.usuario.height)
-        setMeta(store.usuario.meta)
-
-
-    }
 
     return (
         <div className="container">

@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext.js";
-import { InformacionNutricional } from "../component/InformacionNutricional.js";
-import { ListaIngredientes } from "../component/ListaIngredientes.js";
-import { InstruccionesPreparacion } from "../component/InstruccionesPreparacion.js";
+
 
 export const RecetaDetalle = () => {
   const { store, actions } = useContext(Context);
@@ -19,17 +17,28 @@ export const RecetaDetalle = () => {
   }, []);
 
   return (
-    <div className="container mt-5">
-      <h1>{receta.nombre}</h1>
-      <img src={receta.imagen} alt={receta.nombre} className="img-fluid" />
-      <InformacionNutricional
-        calorias={receta.calorias}
-        carbohidratos={receta.carbohidratos}
-        grasas={receta.grasas}
-        proteinas={receta.proteinas}
-      />
-      <ListaIngredientes ingredientes={receta.ingredientes} />
-      <InstruccionesPreparacion instrucciones={receta.instrucciones} />
-    </div>
+    <div className="container" style={{ marginTop: "150px" }}>
+
+      <div className="card mb-3" style={{ maxWidth: "540px" }}>
+        <div className="row g-0">
+          <div className="col-md-4">
+            <img src={receta.image} alt={receta.recipe_name} className="img-fluid rounded-start" />
+          </div>
+          <div className="col-md-8">
+            <div className="card-body">
+              <h5 className="card-title">{receta.recipe_name} ({receta.meal})</h5>
+              <p className="card-text">Ingredientes: {receta.ingredient}</p>
+              <p className="card-text">Instrucciones: {receta.recipe_instructions}</p>
+              <p className="card-text"><small className="text-muted">Proteinas: {receta.proteins} Kcal</small></p>
+              <p className="card-text"><small className="text-muted">Calorias: {receta.calories} </small></p>
+              <p className="card-text"><small className="text-muted">Carbohidratos: {receta.carbohydrates} </small></p>
+              <p className="card-text"><small className="text-muted">Grasas: {receta.fats} </small></p>
+              <p className="card-text"><small className="text-muted">Tiempo de preparación: {receta.time} </small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div >
   );
 };

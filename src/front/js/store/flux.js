@@ -11,7 +11,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			usuario: {},
 			perfil: {},
 			auth: false,
-			recetas: []
+			recetas: [],
+			receta: {}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -187,6 +188,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+
 			hacerPremium: async (id) =>{
 				const resp = await fetch( process.env.BACKEND_URL + "api/user/" + id, {
 					method: "PUT",
@@ -197,7 +199,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} )
 				const data = await resp.json();
 				return data
-			} 
+			},
+
+			obtenerRecetaPorId: async (id) => {
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "api/meals/" + id)
+					const data = await response.json()
+					setStore({ receta: data })
+					return data
+				} catch (error) {
+					console.log(error)
+				}
+			},
 		}
 	};
 };
