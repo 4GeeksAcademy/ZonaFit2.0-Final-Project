@@ -19,7 +19,7 @@ export const Ejercicio = () => {
                 console.error('Error fetching data:', error);
             }
         };
-        if (store.token === "" || store.token === undefined) {
+        if (store.auth === false) {
             navigate('/')
         }
 

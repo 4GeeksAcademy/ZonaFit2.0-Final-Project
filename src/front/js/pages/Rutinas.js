@@ -14,7 +14,7 @@ export const Rutinas = () => {
             await actions.todasLasRutinas()
             setListaRutinas(store.rutinas)
         }
-        if (store.token === "" || store.token === undefined){
+        if (store.auth === false){
             navigate('/')}
 
         else{

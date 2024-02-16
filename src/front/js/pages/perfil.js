@@ -8,12 +8,9 @@ import { Link, useNavigate } from "react-router-dom";
 export const Perfil = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
-    const [nombre, setNombre ] = useState("")
-   
 
     useEffect(() => {
-        if (store.token === "" || store.token === undefined) navigate('/')
-        
+        if (store.auth === false) navigate('/')
     }, [])
 
 

@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
-	const location = useLocation();
 	const { store, actions } = useContext(Context);
 	const navigate = useNavigate();
 

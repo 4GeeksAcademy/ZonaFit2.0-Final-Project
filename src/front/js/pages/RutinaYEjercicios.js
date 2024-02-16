@@ -14,7 +14,7 @@ export const RutinaYEjercicios = () => {
         async function aux() {
             setRutina(await actions.unaRutina(id))
         }
-        if (store.token === "" || store.token === undefined){
+        if (store.auth === false){
             navigate('/')}
 
         else {

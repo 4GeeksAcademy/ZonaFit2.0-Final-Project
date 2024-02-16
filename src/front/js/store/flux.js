@@ -62,10 +62,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			logout: () => {
-				localStorage.removeItem("token");
-			},
-
 			todasLasRutinas: async () => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "api/all_routines");
@@ -187,7 +183,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
-
 
 			hacerPremium: async (id) =>{
 				const resp = await fetch( process.env.BACKEND_URL + "api/user/" + id, {

@@ -2,13 +2,12 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/editar_perfil.css";
 import logo from "../../img/logo.png"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 export const Editar_perfil = () => {
     const { store, actions } = useContext(Context);
     const { id } = useParams()
-
     const [nombre, setNombre] = useState(undefined)
     const [apellido, setApellido] = useState(undefined)
     const [genero, setGenero] = useState(undefined)
@@ -19,10 +18,14 @@ export const Editar_perfil = () => {
     const [meta, setMeta] = useState(undefined)
     const [password, setPassword] = useState(undefined)
     const [new_password, setNew_password] = useState(undefined)
+    const navigate = useNavigate()
 
     useEffect(() => {
-
-        infoUser()
+        if (store.auth === false) {
+            navigate('/')
+        } else {
+            infoUser()
+        }
     }, [])
 
 
