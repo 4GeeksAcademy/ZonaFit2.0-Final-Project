@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
 
@@ -7,13 +7,18 @@ export const RecetaDetalle = () => {
   const { store, actions } = useContext(Context);
   const { id } = useParams();
   const [receta, setReceta] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
       const data = await actions.obtenerRecetaPorId(id);
       setReceta(data);
     }
-    fetchData();
+    if (store.auth === false) {
+      navigate('/')
+    } else {
+      fetchData();
+    }
   }, []);
 
   return (

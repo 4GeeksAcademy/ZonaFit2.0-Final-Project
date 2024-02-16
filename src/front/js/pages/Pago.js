@@ -1,13 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../../styles/styles.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { BotonPaypal } from "./BotonPaypal";
 
 
 export const Pago = () => {
+    const { store } = useContext(Context)
+    const navigate = useNavigate();
 
-    const [checkout, setCheckout] = useState(false)
+    useEffect(() => {
+        if (store.auth === false){
+            navigate('/')
+        }
+    }, []);
 
     return (
         <div>

@@ -2,18 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext.js";
 // import { RecetaCard } from "../component/recetaCard.js";
 import { RecetaCard } from "../pages/recetaCard.js";
+import { useNavigate } from "react-router-dom";
 
 export const Recetas = () => {
     const { store, actions } = useContext(Context);
     const [listaRecetas, setListaRecetas] = useState([]);
     const [filtroComida, setFiltroComida] = useState("");
+    const navigate = useNavigate()
 
     useEffect(() => {
         async function fetchData() {
             const data = await actions.obtenerTodasLasRecetas();
             setListaRecetas(data);
         }
-        fetchData();
+        if (store.auth === false) {
+            navigate('/')
+        } else {
+            fetchData();
+        }   
     }, []);
 
     const filtrarRecetas = () => {
