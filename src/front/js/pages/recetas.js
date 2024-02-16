@@ -20,7 +20,7 @@ export const Recetas = () => {
         if (filtroComida === "") {
             return listaRecetas;
         } else {
-            return listaRecetas.filter((receta) => receta.meal === filtroComida);
+            return listaRecetas.filter((receta) => (receta.meal.toLowerCase()) === filtroComida);
         }
     };
 
