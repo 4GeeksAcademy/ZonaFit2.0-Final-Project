@@ -19,7 +19,7 @@ export const Recetas = () => {
             navigate('/')
         } else {
             fetchData();
-        }   
+        }
     }, []);
 
     const filtrarRecetas = () => {
@@ -45,7 +45,7 @@ export const Recetas = () => {
                     <option value="cena">Cena</option>
                 </select>
             </div>
-            <div className="d-flex flex-row overflow-scroll">
+            <div className="d-flex flex-row overflow-scroll col-md-5 class-r">
                 {filtrarRecetas().map((receta, index) => (
                     <RecetaCard key={index} receta={receta} />
                 ))}
