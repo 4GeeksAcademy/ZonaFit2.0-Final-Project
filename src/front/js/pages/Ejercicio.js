@@ -96,9 +96,9 @@ export const Ejercicio = () => {
                     <p className="mt-2"> Nivel de dificultad: {ejercicio[contador].dificultad} </p>
                     <div> Contador de sets {RepContador} de {ejercicio[contador].series} </div>
                     <p> Repeticiones por ejercicio: {ejercicio[contador].repeticiones} </p>
-                    <button onClick={handleRep} >Siguiente Set</button>
+                    <button className="btn btn-warning mb-2" onClick={handleRep} >Siguiente Set</button>
                     <br />
-                    <button onClick={handleExercise} >Siguiente ejercicio</button>
+                    <button className="btn btn-warning" onClick={handleExercise} >Siguiente ejercicio</button>
                 </div>
             </div>
         </div>
