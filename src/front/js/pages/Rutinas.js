@@ -26,8 +26,8 @@ export const Rutinas = () => {
     return (
         <div className="home">
             <div className="container pt-5 mt-5">
-                <h2 className="pt-5 mt-5" >Rutinas</h2>
-                <div className="d-flex pt-5 mt-5 flex-row overflow-scroll hideOverflowX__">
+                <p className="pt-5 mt-5 text-light fs-1"><strong>Rutinas</strong></p>
+                <div className="d-flex pt-5 mt-5 flex-row overflow-scroll">
                     {listaRutinas && listaRutinas.map((item, index) => (
                         <RoutineCard premium={item.premium} key={index} id={item.id} nombre={item.routine_name} nivel={item.difficulty_level}
                             tipoDeEntrenamiento={item.type_of_routine} img={item.picture} />
