@@ -28,8 +28,8 @@ export const Perfil = () => {
                 <div className="card-body">
                     <h1 className="text-center">Perfil de usuario</h1>
                     <img src="https://placehold.it/150x150" className="rounded-circle img-thumbnail mx-auto d-block mt-4" alt="Foto de perfil" />
-                    <p className="text-center mt-3">Nombre: <strong>{store.usuario.first_name} {store.usuario.last_name}</strong></p>
-                    <p className="text-center">Membresia <strong>{store.usuario.is_premium ? "Premium" :"Gratuita"}</strong></p>
+                    <p className="text-center mt-3 ">Nombre: <strong className="profile-text">{store.usuario.first_name} {store.usuario.last_name}</strong></p>
+                    <p className="text-center">Membresia: <strong>{store.usuario.is_premium ? "Premium" : "Gratuita"}</strong></p>
                     <p className="text-center">Correo electrónico: <strong>{store.usuario.email}</strong></p>
                     <div className="d-flex justify-content-center gap-3 mt-4">
                         <Link to={"/editar_perfil/" + store.usuario.id} className="btn btn-primary">Editar perfil</Link>
