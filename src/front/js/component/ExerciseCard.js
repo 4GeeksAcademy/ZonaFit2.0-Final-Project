@@ -16,10 +16,10 @@ export const ExerciseCard = (props) => {
     }, []);
 
     return (
-        <div className="card m-3" >
+        <div className="card m-3 col-lg-4 class-r" >
             <div className="row g-0">
                 <div className="col-md-4">
-                    <img src={props.imagen} className="img-fluid rounded-start"/>
+                    <img src={props.imagen} className="img-fluid rounded"/>
                 </div>
                 <div className="col-md-8">
                     <div className="card-body">

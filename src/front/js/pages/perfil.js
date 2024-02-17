@@ -21,7 +21,7 @@ export const Perfil = () => {
 
     console.log(store.usuario)
     return (
-        <div className="container">
+        <div className="container mt-5 pt-5">
             <div className="logo-container">
             </div>
             <div className="card my-5">
