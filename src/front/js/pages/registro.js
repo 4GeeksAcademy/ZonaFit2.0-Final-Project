@@ -46,8 +46,6 @@ export const Registro = () => {
     return (
 
         <div className="mt-5 pt-5 container d-flex justify-content-center">
-
-
             <div className="row">
                 <div className="col">
                     <div className="logo-container d-flex justify-content-center">
