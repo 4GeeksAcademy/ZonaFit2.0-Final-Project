@@ -10,7 +10,7 @@ export const Encabezado = () => {
         <div className="home ">
             <div className="home-content" id="home">
 
-                <h3 data-aos="fade-right" data-aos-duration="1000">
+                <h3 data-aos="fade-right" data-aos-duration="1000" class="text-white">
                     es hora de construir un mejor cuerpo!
                 </h3>
                 <h2 data-aos="fade-right"

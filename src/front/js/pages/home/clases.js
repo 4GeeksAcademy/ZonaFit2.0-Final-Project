@@ -1,5 +1,6 @@
 import React from "react";
-import "../../pages/home/style/home.css"
+import "./style/clases.css";
+
 
 
 
@@ -7,66 +8,87 @@ export const Clases = () => {
 
 
     return (
-        <div className="class mg-b" id="class">
+        <div className="section-container" id="about">
             <div className="container">
-                <h3>
-                    obten el cuerpo que deseas
-                </h3>
-                <h2>nuestras horas de clases</h2>
-                <div className="row">
-                    <div className=" col-lg-4 class-l" data-aos="fade-up"
-                        data-aos-duration="1000">
-                        <div className="card mg-b2">
-                            <img src="/hombre-fuerte.jpg" alt="" className="img-fluid" />
-                            <div className="card-body class-m">
-                                <div className="card-content">
-                                    <h2>Yoga</h2>
-                                    <h3>Trained by - richard</h3>
-
-                                    <div className="price">
-                                        $66
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                <div className="row align-items-center">
+                    <div className="col-md-6 text-center text-md-start">
+                        <h2 className="section-heading mb-4  text-white">
+                            ¡Transforma tu cuerpo y cocina delicioso!
+                        </h2>
+                        <p className="lead  text-white">
+                            ZonaFit 2.0 te ofrece planes de entrenamiento personalizados y
+                            deliciosas recetas saludables para alcanzar tus objetivos fitness
+                            de forma sostenible y placentera. Olvídate de las dietas
+                            aburridas y entrenamientos monótonos. ¡Únete a la revolución
+                            fitness con sabor!
+                        </p>
+                    </div>
+                    <div className="col-md-6">
+                        <img
+                            src="https://i.ibb.co/sHFWw5L/pexels-anna-tarazevich-14751176.jpg"
+                            alt="Persona feliz y en forma cocinando"
+                            className="img-fluid mx-auto d-block"
+                        />
+                    </div>
+                </div>
+                <div className="row mt-5">
+                    <div className="col-md-4">
+                        <div className="card about-card h-100">
+                            <img
+                                src="https://i.ibb.co/t2cxKQs/pexels-photo-20204672.jpg"
+                                alt="Plato de comida saludable y colorida"
+                                className="card-img-top"
+                            />
+                            <div className="card-body ">
+                                <h3 className="card-title ">Recetas deliciosas</h3>
+                                <p className="card-text">
+                                    Descubre cientos de recetas nutritivas y fáciles de
+                                    preparar, creadas por expertos en nutrición. Desde
+                                    desayunos energéticos hasta cenas ligeras, encuentra
+                                    opciones para todos los gustos y necesidades
+                                    dietarias.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-4 " data-aos="fade-down"
-                        data-aos-duration="1000">
-                        <div className="card mg-b2">
-                            <img src="/hombre-fuerte.jpg" alt="" className="img-fluid" />
-                            <div className="card-body class-m">
-                                <div className="card-content">
-                                    <h2>Yoga</h2>
-                                    <h3>Asesoria -Andres</h3>
-
-                                    <div className="price">
-                                        $66
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                    <div className="col-md-4">
+                        <div className="card about-card h-100">
+                            <img
+                                src="https://i.ibb.co/YBXBfgY/pexels-kampus-production-8173430.jpg"
+                                alt="Persona haciendo ejercicio con entrenador personal"
+                                className="card-img-top"
+                            />
+                            <div className="card-body">
+                                <h3 className="card-title">Entrenamientos personalizados</h3>
+                                <p className="card-text">
+                                    Obtén un plan de entrenamiento personalizado
+                                    adaptado a tu nivel físico y objetivos. Elige entre
+                                    rutinas de yoga, fuerza, cardio o HIIT, y recibe
+                                    instrucciones paso a paso con videos explicativos.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-4 class-r " data-aos="fade-up"
-                        data-aos-duration="1000">
-                        <div className="card mg-b2">
-                            <img src="/hombre-fuerte.jpg" alt="" className="img-fluid" />
-                            <div className="card-body class-m">
-                                <div className="card-content">
-                                    <h2>Yoga</h2>
-                                    <h3>asesoria by - Richard</h3>
-
-                                    <div className="price">
-                                        $66
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                    <div className="col-md-4">
+                        <div className="card about-card h-100">
+                            <img
+                                src="https://i.ibb.co/wRMWTTk/pexels-dio-hasbi-saniskoro-3280130.jpg"
+                                alt="Grupo de personas haciendo ejercicio juntas"
+                                className="card-img-top"
+                            />
+                            <div className="card-body">
+                                <h3 className="card-title">Comunidad motivadora</h3>
+                                <p className="card-text">
+                                    Únete a nuestra comunidad online y conecta con
+                                    personas que comparten tus objetivos. Comparte
+                                    experiencias, recibe apoyo y motivación, y celebra
+                                    tus logros junto a otros usuarios de ZonaFit 2.0.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
