@@ -478,3 +478,7 @@ iframe{
             
         }
       }
+
+      .flex-row.overflow-scroll::-webkit-scrollbar {
+        display: none;
+      }

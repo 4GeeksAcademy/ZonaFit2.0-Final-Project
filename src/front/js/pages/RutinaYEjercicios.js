@@ -22,10 +22,13 @@ export const RutinaYEjercicios = () => {
         }
     }, []);
 
+    //
+    
+    //
 
     return (
         <div className="container mt-5">
-            <h1>Titulo de la rutina</h1>
+            <h1 className="mt-5">{rutina.routine_name}</h1>
             <RoutineCard id={rutina.id} nombre={rutina.routine_name} nivel={rutina.difficulty_level} tipoDeEntrenamiento={rutina.type_of_routine} img={rutina.picture} />
             <ExerciseList idRutina={id} />
         </div>

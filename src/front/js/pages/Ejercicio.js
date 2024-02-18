@@ -43,6 +43,7 @@ export const Ejercicio = () => {
                 title: "Rutina Culminada",
                 text: "Felicidades !!!",
             })
+            useNavigate('/perfil')
         }
     };
 
@@ -58,7 +59,7 @@ export const Ejercicio = () => {
                     icon: "success",
                     title: "Set Culminado",
                     text: "Procede al siguiente ejercicio",
-                });
+                });  
             }
         }
     };
