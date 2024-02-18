@@ -28,8 +28,11 @@ body {
     background-color: #F26B21;
     color: #f0f0f0;
     border-radius: 24px;
-    padding: 24px 16px;
+    padding: 12px 16px;
     border: 2px solid #181818;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-ghost {

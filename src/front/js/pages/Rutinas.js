@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { RoutineCard } from "../component/RoutineCard.js";
 import { Context } from "../store/appContext.js";
-import "../../styles/styles.css";
 import { Link, useNavigate } from "react-router-dom";
+import "../../styles/styles.css";
 
 export const Rutinas = () => {
     const {store, actions } = useContext(Context);
@@ -54,9 +54,9 @@ export const Rutinas = () => {
 
     ///
     return (
-        <div className="home">
+        <div >
             <div className="container pt-5 mt-5">
-                <p className="pt-5 mt-5 text-light fs-1"><strong>Rutinas</strong></p>
+                <p className="pt-5 mt-5 text-light fs-1">Rutinas</p>
                 <div id="contenedor-imagenes" onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseLeave={handleMouseLeave} onMouseMove={handleMouseMove} className="d-flex pt-5 mt-5 flex-row overflow-scroll">
                     {listaRutinas && listaRutinas.map((item, index) => (
                         <RoutineCard premium={item.premium} key={index} id={item.id} nombre={item.routine_name} nivel={item.difficulty_level}
@@ -65,15 +65,5 @@ export const Rutinas = () => {
                 </div>
             </div>
         </div>
-    /* 
-        // <div className="container pt-5 mt-5">
-        //     <h2>Rutinas</h2>
-        //     <div className="d-flex flex-row overflow-scroll" >
-        //         {listaRutinas && listaRutinas.map((item, index) => (
-        //             <RoutineCard key={index} id={item.id} nombre={item.routine_name} nivel={item.difficulty_level} 
-        //             tipoDeEntrenamiento={item.type_of_routine} img={item.picture}/>
-        //         ))}
-        //     </div>
-        // </div> */
     )
 }
