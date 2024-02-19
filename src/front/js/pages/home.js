@@ -16,7 +16,8 @@ export const Home = () => {
 			<SobreNosotros />
 			<Clases />
 			<Horarios />
-			{/* <Contacto /> */}
+			<Contacto />
+
 		</div>
 
 	);

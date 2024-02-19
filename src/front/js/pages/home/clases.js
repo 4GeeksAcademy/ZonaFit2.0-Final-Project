@@ -31,6 +31,10 @@ export const Clases = () => {
                         />
                     </div>
                 </div>
+
+                <h2 className="section-heading mt-5 mb-4  text-white" id="class">
+                    ¡Grandes beneficios te esperan!
+                </h2>
                 <div className="row mt-5">
                     <div className="col-md-4">
                         <div className="card about-card h-100">
