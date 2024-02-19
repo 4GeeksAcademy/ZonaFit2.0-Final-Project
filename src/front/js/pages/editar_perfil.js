@@ -58,12 +58,12 @@ export const Editar_perfil = () => {
 
 
     return (
-        <div className="container">
+        <div className="container mt-5 pt-5 ">
             <div className="logo-container">
             </div>
             <div className="card my-5">
                 <div className="card-body">
-                    <h2 className="text-center">Editar perfil</h2>
+                    <h1 className="text-center">Editar perfil</h1>
 
                     <div className="form-group mb-3">
                         <label htmlFor="name">Nombres</label>

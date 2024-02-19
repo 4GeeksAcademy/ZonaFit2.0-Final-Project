@@ -16,14 +16,20 @@ body {
     margin: 0 auto;
 }
 
-
-
 .form-control {
     border-radius: 24px;
     padding: 12px 16px;
 }
 
 .btn-primary {
+    background-color: #F26B21;
+    color: #f0f0f0;
+    border-radius: 24px;
+    padding: 12px 16px;
+    border: 2px solid #181818;
+}
+
+.btn-warning {
     background-color: #F26B21;
     color: #f0f0f0;
     border-radius: 24px;
