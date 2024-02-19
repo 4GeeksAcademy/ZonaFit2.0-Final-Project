@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 
-
 export const Registro = () => {
     const { store, actions } = useContext(Context);
     const [nombre, setNombre] = useState("");
@@ -56,7 +55,7 @@ export const Registro = () => {
             <div className="col-md-6 col-lg-4">
                 <div className="card my-5">
                     <div className="card-body">
-
+                    <h1 className="text-center">Registro</h1>
                         <form>
                             
                             <div className="mb-3">
