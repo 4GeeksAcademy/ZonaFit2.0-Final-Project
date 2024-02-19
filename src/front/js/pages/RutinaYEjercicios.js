@@ -22,10 +22,6 @@ export const RutinaYEjercicios = () => {
         }
     }, []);
 
-    //
-    
-    //
-
     return (
         <div className="container mt-5">
             <h1 className="mt-5 pt-5 text-light">{rutina.routine_name}</h1>

@@ -15,7 +15,7 @@ export const HazteMiembro = () => {
                         data-aos-duration="1000">
                         <h3>Nuevo en  Zonafit 2.0?</h3>
                         <h4>tu membresia si pagas dos meses ($62.50 per month)</h4>
-                        <p class="text-white">Zonafit 2.0 es tu mejor opcion sube de nivel ahora mismo y empieza el cambio</p>
+                        <p className="text-white">Zonafit 2.0 es tu mejor opcion sube de nivel ahora mismo y empieza el cambio</p>
                         <button className="btn-add">Hazte miembro hoy</button>
                     </div>
                     <div className="col-lg-5 addtion-l " data-aos="fade-down"

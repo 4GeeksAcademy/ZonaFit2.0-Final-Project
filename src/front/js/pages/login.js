@@ -42,12 +42,11 @@ export const Login = () => {
 
             <div className="title" style={{ marginTop: "15px" }}>
                 <img src={logo} alt="logo-zonafit" />
-                <h1 className="text-light">Iniciar sesión</h1>
             </div>
             <div className="col-md-6 col-lg-4" style={{ marginTop: "15px" }}>
                 <div className="card my-5">
                     <div className="card-body">
-
+                    <h1 className="text-center">Iniciar sesión</h1>
                         <form>
                             <div className="mb-5">
                                 <label htmlFor="email">Email</label>

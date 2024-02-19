@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "../../styles/styles.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
+import logo from "../../img/logo.png"
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
@@ -9,7 +10,7 @@ export const Navbar = () => {
 
 	return (
 		<nav className="navbar navbar-expand-md mb-5 navbar-dark fixed-top">
-			<a className="navbar-brand" href="#home"><img src="https://ibb.co/FqMgJNH" alt="logo" /></a>
+		<Link className="navbar-brand" to={'/#home'}><img src={logo} alt="logo" /></Link>
 			<a className="navbar-toggler togg" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 				<i className="fas fa-bars menu "></i>
 			</a>
