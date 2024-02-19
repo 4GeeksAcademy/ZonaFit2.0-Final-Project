@@ -1,11 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/login.css";
 import logo from "../../img/logo.png"
-
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
-
+import "../../styles/login.css";
 
 
 export const Login = () => {
@@ -42,16 +40,9 @@ export const Login = () => {
     return (
         <div className="mt-5 pt-5 container d-flex justify-content-center">
 
-            {/* <div className="row">
-                <div className="col">
-                    <div className="logo-container">
-                        <img src={logo} alt="logo-zonafit" />
-                    </div>
-                </div>
-            </div> */}
             <div className="title" style={{ marginTop: "15px" }}>
                 <img src={logo} alt="logo-zonafit" />
-                <h1>Iniciar sesión</h1>
+                <h1 className="text-light">Iniciar sesión</h1>
             </div>
             <div className="col-md-6 col-lg-4" style={{ marginTop: "15px" }}>
                 <div className="card my-5">

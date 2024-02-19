@@ -59,7 +59,7 @@ export const Ejercicio = () => {
                     icon: "success",
                     title: "Set Culminado",
                     text: "Procede al siguiente ejercicio",
-                });  
+                });
             }
         }
     };
@@ -69,11 +69,11 @@ export const Ejercicio = () => {
     function separarString(str) {
         var partes = str.split(".");
         for (var i = 0; i < partes.length; i++) {
-          partes[i] = partes[i].trim();
+            partes[i] = partes[i].trim();
         }
         partes = partes.filter(part => part !== "");
         return partes;
-      }
+    }
 
     return (
         <div className="pt-5 mt-5">
@@ -91,14 +91,13 @@ export const Ejercicio = () => {
                     <p className="mb-0"> Musculos involucrados: {ejercicio[contador].muscle_name} </p>
                     <p className="mb-2"> Equipo necesario: {ejercicio[contador].equipment_name}</p>
                     <p className="mb-0"> Descripción: </p>
-                        {separarString(descripcion).map((item, index) => (
-                           <p key={index} className="mb-0"> {item}. </p> 
-                        ))}
+                    {separarString(descripcion).map((item, index) => (
+                        <p key={index} className="mb-0"> {item}. </p>
+                    ))}
                     <p className="mt-2"> Nivel de dificultad: {ejercicio[contador].dificultad} </p>
                     <div> Contador de sets {RepContador} de {ejercicio[contador].series} </div>
                     <p> Repeticiones por ejercicio: {ejercicio[contador].repeticiones} </p>
-                    <button className="btn btn-warning mb-2" onClick={handleRep} >Siguiente Set</button>
-                    <br />
+                    <button className="btn btn-warning mb-3 me-3" onClick={handleRep} >Siguiente Set</button>
                     <button className="btn btn-warning mb-3" onClick={handleExercise} >Siguiente ejercicio</button>
                 </div>
             </div>

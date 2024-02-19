@@ -53,13 +53,12 @@ export const Registro = () => {
                     </div>
                 </div>
             </div>
-
-
             <div className="col-md-6 col-lg-4">
                 <div className="card my-5">
                     <div className="card-body">
 
                         <form>
+                            
                             <div className="mb-3">
                                 <label htmlFor="name">Nombre</label>
                                 <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} className="form-control" id="name" placeholder="Nepomuceno Alberto" />
