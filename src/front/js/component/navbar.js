@@ -9,7 +9,7 @@ export const Navbar = () => {
 
 	return (
 		<nav className="navbar navbar-expand-md mb-5 navbar-dark fixed-top">
-			<a className="navbar-brand" href="#home"><img src="https://ibb.co/FqMgJNH" alt="logo" /></a>
+			<a className="navbar-brand" href="#home"><img src="img/logo.png" alt="logo" /></a>
 			<a className="navbar-toggler togg" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 				<i className="fas fa-bars menu "></i>
 			</a>
