@@ -14,10 +14,40 @@ export const ExerciseList = (props) => {
         aux()
     }, []);
 
+    //
+    const [isMouseDown, setIsMouseDown] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e) => {
+    setIsMouseDown(true);
+    setStartX(e.pageX);
+    setScrollLeft(e.target.scrollLeft);
+    e.currentTarget.style.cursor = 'grabbing'; // Cambia el cursor al agarrar
+  };
+
+  const handleMouseUp = (e) => {
+    setIsMouseDown(false);
+    e.currentTarget.style.cursor = 'grab'; // Cambia el cursor de nuevo al soltar
+  };
+
+  const handleMouseLeave = () => {
+    setIsMouseDown(false);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isMouseDown) return;
+    e.preventDefault();
+    const x = e.pageX;
+    const walk = (x - startX) * 3; // Ajusta la velocidad de desplazamiento
+    e.currentTarget.scrollLeft = scrollLeft - walk;
+  };
+    //
+
     return (
         <div className="flex-container mt-5">
             <h2>Ejercicios</h2>
-            <div className="d-flex flex-row overflow-scroll" >
+            <div className="d-flex flex-row overflow-scroll" id="contenedor-imagenes" onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseLeave={handleMouseLeave} onMouseMove={handleMouseMove} >
                 {listaEjercicios && listaEjercicios.map((item, index) => (
                     <ExerciseCard key={index} nombre={item.nombreEjercicio} idEjercicio={item.idEjercicio} sets={item.series} repeticiones={item.repeticiones} imagen={item.imagen} />
                 ))}

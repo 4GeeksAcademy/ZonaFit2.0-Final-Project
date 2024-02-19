@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "../../styles/styles.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
+import logo from "../../img/logo.png"
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);

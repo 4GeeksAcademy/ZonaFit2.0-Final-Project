@@ -478,3 +478,24 @@ iframe{
             
         }
       }
+
+      .flex-row.overflow-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+     /* .btn-primary {
+        background-color: #F26B21;
+        color: #f0f0f0;
+        border-radius: 24px;
+        width: 400px;
+        border: 2px solid #181818;
+    } */
+
+    .imagen-reducida{
+        width: 65%;
+        height: auto;
+    }
+
+    .imagine{
+        border-radius: 5%;
+    }
